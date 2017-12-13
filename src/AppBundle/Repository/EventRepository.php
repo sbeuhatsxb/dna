@@ -31,6 +31,16 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function rechercheEspace($espace)
+    {
+        $query=$this->createQueryBuilder('e')
+                        ->where('e.espace=  :espace')
+                        ->setParameter('espace', '$espace')
+                        ->getQuery();
+        $events = $query->getResult();
+
+    }
+
 }
 // $repository = $this->getDoctrine()->getRepository('AppBundle:Material');
 // $query = $repository->createQueryBuilder('m')

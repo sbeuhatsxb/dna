@@ -24,7 +24,7 @@ class Espace
     /**
      * @var bool
      *
-     * @ORM\Column(name="label", type="boolean")
+     * @ORM\Column(name="label", type="string", length=10)
      */
     private $label;
 

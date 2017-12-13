@@ -5,6 +5,9 @@ namespace AppBundle\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\Event;
+use AppBundle\Entity\Ville;
+use AppBundle\Entity\Etre;
+use AppBundle\Entity\Espace;
 
 
 class AppFixtures extends Fixture
@@ -45,14 +48,55 @@ class AppFixtures extends Fixture
                         $event->setLieu((string)$coulage->Lieu);
                         $event->setAdresse((string)$coulage->Adresse);
                         $event->setCp((string)$coulage->CodePostal);
-                        $event->setVille((string)$coulage->Ville);
                         $event->setHoraire((string)$coulage->Ref_datepremiereoccurence->dateRef->Horaires);
                         $event->setTelephone((string)$meta->Contacts->Contact->Telephone);
                         $event->setNbParticipants(rand(0,1500));
 
-                        $manager->persist($event);
+                        // $ville = New Ville();
+                        // $ville->setNomVille((string)$coulage->Ville);
+                        // $manager->persist($ville);
+
                     }
+
                 }
+
+                $etre = New Etre();
+                $etre->setLabel("");
+                $etre = New Etre();
+                $etre->setLabel("émerveillé");
+                $etre = New Etre();
+                $etre->setLabel("aventurier");
+                $etre = New Etre();
+                $etre->setLabel("spectateur");
+                $etre = New Etre();
+                $etre->setLabel("gourmand");
+                $etre = New Etre();
+                $etre->setLabel("curieux");
+                $etre = New Etre();
+                $etre->setLabel("instruit");
+                $etre = New Etre();
+                $etre->setLabel("généreux");
+                $etre = New Etre();
+                $etre->setLabel("joueur");
+                $etre = New Etre();
+                $etre->setLabel("chineur");
+                $etre = New Etre();
+                $etre->setLabel("sportif");
+                $etre = New Etre();
+                $etre->setLabel("danseur");
+                $etre = New Etre();
+                $etre->setLabel("sociable");
+                $manager->persist($etre);
+
+
+
+                $espace = New Espace();
+                $espace->setLabel("Intérieur");
+                $espace = New Espace();
+                $espace->setLabel("Extérieur");
+                $manager->persist($espace);
+
+
                 $manager->flush();
             }
         }

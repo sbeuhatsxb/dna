@@ -10,6 +10,7 @@ use AppBundle\Entity\Etre;
 use AppBundle\Entity\Espace;
 
 
+
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
@@ -27,7 +28,7 @@ class AppFixtures extends Fixture
         // echo "<pre>".print_r($xml)."</pre>";
 
         // ->/results->/events->category->theme->event->meta->key
-
+        $villes = [];
         foreach ($results->events->category as $category) {
             foreach ($category->theme as $theme) {
                 foreach ($theme->event as $event) {
@@ -52,9 +53,15 @@ class AppFixtures extends Fixture
                         $event->setTelephone((string)$meta->Contacts->Contact->Telephone);
                         $event->setNbParticipants(rand(0,1500));
 
-                        // $ville = New Ville();
-                        // $ville->setNomVille((string)$coulage->Ville);
-                        // $manager->persist($ville);
+
+                        if(!in_array(((string)$coulage->Ville), $villes))
+                        {
+                            $ville = (string)$coulage->Ville;
+                            array_push($villes, $ville);
+                            $ville = New Ville();
+                            $ville->setNomVille(end($villes));
+                            $manager->persist($ville);
+                        }
 
                     }
 

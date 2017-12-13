@@ -2,8 +2,33 @@
 
 {% block body %}
 
-{{ form_start(form)}}
-{{ form_widget(form)}}
-{{ form_end(form)}}
+<p>Le principe est simple.<p>
+<p>Trois règles à suivre :<p>
+<h2>Règle n°1</h2>
+<p>Choisissez votre humeur<p>
+<h2>Règle n°2</h2>
+<p>Choisissez votre environnement<p>
+<h2>Règle n°3</h2>
+<p>Choisissez votre lieu<p>
 
+<p>Vous êtes prêt ?<p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="form">
+            <div class="col-xs-12">
+                {{ form_row(form.etre)}}
+            </div>
+            <div class="col-xs-12">
+                {{ form_row(form.espace)}}
+            </div>
+            <div class="col-xs-12">
+                {{ form_row(form.ville)}}
+            </div>
+            <div class="col-xs-12">
+                {{ form_row(form.save)}}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

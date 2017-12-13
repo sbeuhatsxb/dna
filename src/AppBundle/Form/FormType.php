@@ -36,15 +36,11 @@ class FormType extends AbstractType
                            'mapped'=>false,
                            'class'=>'AppBundle\Entity\Espace',
                     ))
-                // ->add('ville', EntityType::class, array (
-                //      'label'=>'à',
-                //      'mapped'=>false,
-                //      'class'=>'AppBundle\Entity\Event',
-                //      'query_builder'=>function(EntityRepository $er){
-                //        return $er->createQueryBuilder('e')
-                //        ->orderBy('e.ville', 'ASC');
-                //      },
-                // ))
+                ->add('ville', EntityType::class, array (
+                     'label'=>'à',
+                     'mapped'=>false,
+                     'class'=>'AppBundle\Entity\Ville',
+                ))
                 ->add('save', SubmitType::class, array(
                     'label' => "Go !",
                     'attr' => array(

@@ -24,22 +24,16 @@ class Espace
     /**
      * @var bool
      *
-     * @ORM\Column(name="interieur", type="boolean")
+     * @ORM\Column(name="label", type="boolean")
      */
-    private $interieur;
+    private $label;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="exterieur", type="boolean")
-     */
-    private $exterieur;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -47,50 +41,26 @@ class Espace
     }
 
     /**
-     * Set interieur
+     * Set label
      *
-     * @param boolean $interieur
+     * @param boolean $label
      *
      * @return Espace
      */
-    public function setInterieur($interieur)
+    public function setLabel($label)
     {
-        $this->interieur = $interieur;
+        $this->label = $label;
 
         return $this;
     }
 
     /**
-     * Get interieur
+     * Get label
      *
-     * @return bool
+     * @return boolean
      */
-    public function getInterieur()
+    public function getLabel()
     {
-        return $this->interieur;
-    }
-
-    /**
-     * Set exterieur
-     *
-     * @param boolean $exterieur
-     *
-     * @return Espace
-     */
-    public function setExterieur($exterieur)
-    {
-        $this->exterieur = $exterieur;
-
-        return $this;
-    }
-
-    /**
-     * Get exterieur
-     *
-     * @return bool
-     */
-    public function getExterieur()
-    {
-        return $this->exterieur;
+        return $this->label;
     }
 }

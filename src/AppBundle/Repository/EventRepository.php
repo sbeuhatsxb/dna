@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Event;
 
 /**
  * EventRepository
@@ -10,4 +11,22 @@ namespace AppBundle\Repository;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function recherche()
+    {
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Event')->findAll();
+        $query = $repository->createQueryBuilder('e')
+        ->where('e.ville :ville')
+        ->setParameter('ville', 'Strasbourg')
+        ->getQuery();
+    $events = $query->getResult();
+
+    }
 }
+// $repository = $this->getDoctrine()->getRepository('AppBundle:Material');
+// $query = $repository->createQueryBuilder('m')
+// ->where('m.available_qty > :available_qty')
+// ->andWhere()
+// ->setParameter('available_qty', '0')
+// ->getQuery();
+//
+// $materials = $query->getResult();

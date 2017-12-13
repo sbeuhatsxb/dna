@@ -60,45 +60,64 @@ class AppFixtures extends Fixture
 
                 }
 
-                $etre = New Etre();
-                $etre->setLabel("");
-                $etre = New Etre();
-                $etre->setLabel("émerveillé");
-                $etre = New Etre();
-                $etre->setLabel("aventurier");
-                $etre = New Etre();
-                $etre->setLabel("spectateur");
-                $etre = New Etre();
-                $etre->setLabel("gourmand");
-                $etre = New Etre();
-                $etre->setLabel("curieux");
-                $etre = New Etre();
-                $etre->setLabel("instruit");
-                $etre = New Etre();
-                $etre->setLabel("généreux");
-                $etre = New Etre();
-                $etre->setLabel("joueur");
-                $etre = New Etre();
-                $etre->setLabel("chineur");
-                $etre = New Etre();
-                $etre->setLabel("sportif");
-                $etre = New Etre();
-                $etre->setLabel("danseur");
-                $etre = New Etre();
-                $etre->setLabel("sociable");
-                $manager->persist($etre);
-
-
-
-                $espace = New Espace();
-                $espace->setLabel("Intérieur");
-                $espace = New Espace();
-                $espace->setLabel("Extérieur");
-                $manager->persist($espace);
-
-
-                $manager->flush();
             }
         }
+
+        $etre = New Etre();
+        $etre->setLabel("");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("émerveillé");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("aventurier");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("spectateur");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("gourmand");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("curieux");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("instruit");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("généreux");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("joueur");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("chineur");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("sportif");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("danseur");
+        $manager->persist($etre);
+        $etre = New Etre();
+        $etre->setLabel("sociable");
+        $manager->persist($etre);
+
+
+
+        $espace = New Espace();
+        $espace->setLabel("");
+        $manager->persist($espace);
+
+        $espace = New Espace();
+        $espace->setLabel("au chaud");
+        $manager->persist($espace);
+
+        $espace = New Espace();
+        $espace->setLabel("au frais");
+        $manager->persist($espace);
+
+
+        $manager->flush();
     }
 }

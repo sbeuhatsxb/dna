@@ -20,9 +20,15 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
+            $repository = $this->getDoctrine()->getRepository('AppBundle:Event');
+            $query = $repository->createQueryBuilder('e')
+                            ->where('e.ville=  :ville')
+                            ->setParameter('ville', 'Strasbourg')
+                            ->getQuery();
+                            $events = $query->getResult();
 
-            $em = $this->getDoctrine()->getManager();
-            $events = $em->getRepository('AppBundle:Event')->recherche();
+            // $em = $this->getDoctrine()->getManager();
+            // $events = $em->getRepository('AppBundle:Event')->recherche();
 
             return $this->render('default/resultats.html.twig', array(
                 'events'=>$events,

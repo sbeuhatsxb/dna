@@ -11,14 +11,13 @@ use AppBundle\Entity\Event;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function recherche()
+    public function recherche($ville)
     {
-        $repository = $this->getDoctrine()->getRepository('AppBundle:Event')->findAll();
-        $query = $repository->createQueryBuilder('e')
-        ->where('e.ville :ville')
-        ->setParameter('ville', 'Strasbourg')
-        ->getQuery();
-    $events = $query->getResult();
+        $query=$this->createQueryBuilder('e')
+                        ->where('e.ville=  :ville')
+                        ->setParameter('ville', '$ville')
+                        ->getQuery();
+        $events = $query->getResult();
 
     }
 }

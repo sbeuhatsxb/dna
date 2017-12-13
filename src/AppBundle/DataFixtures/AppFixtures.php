@@ -29,6 +29,11 @@ class AppFixtures extends Fixture
 
         // ->/results->/events->category->theme->event->meta->key
         $villes = [];
+
+        $ville = New Ville();
+        $ville->setNomVille("");
+        $manager->persist($ville);
+
         foreach ($results->events->category as $category) {
             foreach ($category->theme as $theme) {
                 foreach ($theme->event as $event) {

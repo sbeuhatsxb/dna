@@ -80,7 +80,7 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaire", type="datetime")
+     * @ORM\Column(name="horaire", type="string", length=255)
      */
     private $horaire;
 
@@ -439,5 +439,29 @@ class Event
     public function getEspace()
     {
         return $this->espace;
+    }
+
+    /**
+     * Set descriptionComplementaire
+     *
+     * @param string $descriptionComplementaire
+     *
+     * @return Event
+     */
+    public function setDescriptionComplementaire($descriptionComplementaire)
+    {
+        $this->descriptionComplementaire = $descriptionComplementaire;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionComplementaire
+     *
+     * @return string
+     */
+    public function getDescriptionComplementaire()
+    {
+        return $this->descriptionComplementaire;
     }
 }

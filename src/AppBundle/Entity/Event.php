@@ -66,7 +66,7 @@ class Event
     /**
      * @var int
      *
-     * @ORM\Column(name="cp", type="integer")
+     * @ORM\Column(name="cp", type="string", length=255)
      */
     private $cp;
 
@@ -80,14 +80,14 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaire", type="datetime")
+     * @ORM\Column(name="horaire", type="string", length=255)
      */
     private $horaire;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="telephone", type="integer", nullable=true)
+     * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
      */
     private $telephone;
 

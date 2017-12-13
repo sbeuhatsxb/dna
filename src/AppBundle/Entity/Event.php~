@@ -45,6 +45,13 @@ class Event
     /**
      * @var string
      *
+     * @ORM\Column(name="descriptionComplementaire", type="text")
+     */
+    private $descriptionComplementaire;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="lieu", type="string", length=255, nullable=true)
      */
     private $lieu;

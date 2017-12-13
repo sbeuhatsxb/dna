@@ -45,6 +45,13 @@ class Event
     /**
      * @var string
      *
+     * @ORM\Column(name="descriptionComplementaire", type="text")
+     */
+    private $descriptionComplementaire;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="lieu", type="string", length=255, nullable=true)
      */
     private $lieu;
@@ -432,5 +439,29 @@ class Event
     public function getEspace()
     {
         return $this->espace;
+    }
+
+    /**
+     * Set descriptionComplementaire
+     *
+     * @param string $descriptionComplementaire
+     *
+     * @return Event
+     */
+    public function setDescriptionComplementaire($descriptionComplementaire)
+    {
+        $this->descriptionComplementaire = $descriptionComplementaire;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionComplementaire
+     *
+     * @return string
+     */
+    public function getDescriptionComplementaire()
+    {
+        return $this->descriptionComplementaire;
     }
 }

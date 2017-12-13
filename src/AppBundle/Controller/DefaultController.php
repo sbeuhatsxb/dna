@@ -20,13 +20,19 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            $ville=$request->request->get('ville');
-            $em = $this->getDoctrine()->getManager();
-            $events = $em->getRepository('AppBundle:Event')->recherche($ville);
+            if ($request->getMethod() == 'POST') {
+                $data = $form->getData();
+                // var_dump($data);
+                $ville = $form["ville"]->getData();
+                var_dump($ville);
+                // $ville=$request->request->get('ville');
+                $em = $this->getDoctrine()->getManager();
+                $events = $em->getRepository('AppBundle:Event')->recherche($ville);
 
-            return $this->render('default/resultats.html.twig', array(
-                'events'=>$events,
-            ));
+                return $this->render('default/resultats.html.twig', array(
+                    'events'=>$events,
+                ));    }
+
         }
 
         return $this->render('default/index.html.twig', array(

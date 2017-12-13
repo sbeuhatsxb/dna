@@ -11,7 +11,7 @@ use AppBundle\Entity\Event;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function recherche($ville)
+    public function rechercheVille($ville)
     {
         $query=$this->createQueryBuilder('e')
                         ->where('e.ville=  :ville')
@@ -20,6 +20,17 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
         $events = $query->getResult();
 
     }
+
+    public function rechercheEtre($etre)
+    {
+        $query=$this->createQueryBuilder('e')
+                        ->where('e.etre=  :etre')
+                        ->setParameter('etre', '$etre')
+                        ->getQuery();
+        $events = $query->getResult();
+
+    }
+
 }
 // $repository = $this->getDoctrine()->getRepository('AppBundle:Material');
 // $query = $repository->createQueryBuilder('m')

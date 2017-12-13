@@ -23,11 +23,14 @@ class DefaultController extends Controller
             if ($request->getMethod() == 'POST') {
                 $data = $form->getData();
                 // var_dump($data);
-                $ville = $form["ville"]->getData();
-                var_dump($ville);
+                // $ville = $form["ville"]->getData();
+                $etre = $form["etre"]->getData();
+
+                var_dump($etre);
                 // $ville=$request->request->get('ville');
                 $em = $this->getDoctrine()->getManager();
-                $events = $em->getRepository('AppBundle:Event')->recherche($ville);
+                // $events = $em->getRepository('AppBundle:Event')->rechercheVille($ville);
+                $events = $em->getRepository('AppBundle:Event')->rechercheEtre($etre);
 
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,

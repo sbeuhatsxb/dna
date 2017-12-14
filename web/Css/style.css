@@ -6,13 +6,23 @@ img {
     margin-top: -20px;
 }
 
+.regles{
+    margin-top: 3%;
+}
 
+.choix {
+    margin-top: 5%;
+}
 
 
 .thumbnail{
     max-width: 350px;
     max-height: 400px;
     margin: auto;
+    -webkit-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+
 }
 
 
@@ -65,7 +75,7 @@ p {
 
 
 .required {
-    font-family: Questrial;
+    font-family: Sriracha;
     font-size: 1.5em;
     color: black;
 }
@@ -97,20 +107,20 @@ p {
 
 .form-group-save {
     text-align: center;
-    font-family: Faster One;
+    font-family: Sriracha;
     font-size: 2em;
 }
 
 #appbundle_etre_etre {
-    font-family: Faster One;
+    font-family: Sriracha;
 }
 
 #appbundle_etre_espace {
-    font-family: Faster One;
+    font-family: Sriracha;
 }
 
 #appbundle_etre_ville {
-    font-family: Faster One;
+    font-family: Sriracha;
 }
 
 *::selection {

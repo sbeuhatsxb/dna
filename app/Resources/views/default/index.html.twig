@@ -8,11 +8,11 @@
     <div class="container-fluid">
 
 
-        <h1> <span> Le principe est simple</span></h1>
+        <h1><span> Le principe est simple</span></h1>
         <h2>Trois règles à suivre :</h2>
 
-            <div class="row">
-                <div class="col-xs-4 text-center">
+            <div class="row regles">
+                <div class="col-xs-4 text-center ">
                     <div class="thumbnail">
                         <div class="caption">
                             <h3 class="text-center">Règle n°1</h3>
@@ -44,41 +44,30 @@
         <div class=intro>
 
 
-            <h2>Il ne reste plus qu'à faire votre choix !!!</h2>
+            <h2 class="choix">Il ne reste plus qu'à faire votre choix !!!</h2>
 
 
-        <div class="form">
-        <div class="row formulaire">
-            <div class="col-xs-12 text-justify">
-
-                {{ form_start(form) }}
-                <p>je veux être {{ form_widget(form.etre) }}{{ form_errors(form.etre) }} en étant {{ form_widget(form.espace) }} {{ form_errors(form.espace) }} à {{ form_widget(form.ville) }} {{ form_errors(form.ville) }} </p>
-
-                {#<div class="form-group-etre">#}
-                    {#{{ form_label(form.etre) }}#}
-                    {#{{ form_widget(form.etre) }}#}
-                    {#{{ form_errors(form.etre) }}#}
-                {#</div>#}
-                {#<div class="form-group-espace">#}
-                    {#{{ form_label(form.espace) }}#}
-                    {#</br>#}
-                    {#{{ form_widget(form.espace) }}#}
-                    {#{{ form_errors(form.espace) }}#}
-                {#</div>#}
-                {#<div class="form-group-ville">#}
-                    {#{{ form_label(form.ville) }}#}
-                    {#</br>#}
-                    {#{{ form_widget(form.ville) }}#}
-                    {#{{ form_errors(form.ville) }}#}
-                {#</div>#}
-                {#<div class="form-group-save">#}
-                    {#{{ form_label(form.save) }}#}
-                    {#</br>#}
-                    {#{{ form_widget(form.save) }}#}
-                {#</div>#}
+            <div class="form">
+                <div class="container bot_form">
+                    <div class="row">
+                        {{ form_start(form) }}
+                        <div class="col-xs-4">
+                            <p>JE VEUX ÊTRE {{ form_widget(form.etre) }}{{ form_errors(form.etre) }}</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <p>ET {{ form_widget(form.espace) }} {{ form_errors(form.espace) }}</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <p>À {{ form_widget(form.ville) }}{{ form_errors(form.ville) }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group-save">
+                        {{ form_label(form.save) }}
+                        </br>
+                        {{ form_widget(form.save) }}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
     </div>
 
 

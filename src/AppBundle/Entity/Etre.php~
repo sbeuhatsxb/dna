@@ -28,6 +28,10 @@ class Etre
      */
     private $label;
 
+    public function __toString ()
+    {
+        return $this->label;
+    }
 
 
     /**

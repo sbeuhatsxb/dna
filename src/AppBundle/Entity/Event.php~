@@ -38,14 +38,14 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descriptionComplementaire", type="text")
+     * @ORM\Column(name="descriptionComplementaire", type="text", nullable=true)
      */
     private $descriptionComplementaire;
 
@@ -71,14 +71,12 @@ class Event
     private $cp;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="ville", type="string", length=255)
-     */
+    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Ville", inversedBy="ville")
+    *@ORM\JoinColumn(nullable=true)
+    */
     private $ville;
 
     /**
-     * @var \DateTime
      *
      * @ORM\Column(name="horaire", type="string", length=255)
      */
@@ -105,14 +103,16 @@ class Event
     private $etres;
 
     /**
-    *@ORM\OneToMany(targetEntity="AppBundle\Entity\Espace", mappedBy="espace")
-    *@ORM\JoinColumn(nullable=false)
+    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Espace")
+    *@ORM\JoinColumn(nullable=true)
     */
     private $espace;
 
+
+
     public function __toString()
     {
-        return $this->ville;
+        return $this->titre;
     }
 
     /**
@@ -463,5 +463,19 @@ class Event
     public function getDescriptionComplementaire()
     {
         return $this->descriptionComplementaire;
+    }
+
+    /**
+     * Set espace
+     *
+     * @param \AppBundle\Entity\Espace $espace
+     *
+     * @return Event
+     */
+    public function setEspace(\AppBundle\Entity\Espace $espace = null)
+    {
+        $this->espace = $espace;
+
+        return $this;
     }
 }

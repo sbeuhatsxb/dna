@@ -28,6 +28,12 @@ class Ville
      */
     private $nomVille;
 
+    /**
+    *@ORM\OneToMany(targetEntity="AppBundle\Entity\Event", mappedBy="ville")
+    *@ORM\JoinColumn(nullable=true)
+    */
+    private $events;
+
     public function __toString()
     {
         return $this->nomVille;
@@ -89,5 +95,48 @@ class Ville
     public function getNomVille()
     {
         return $this->nomVille;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->event = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+
+    /**
+     * Add event
+     *
+     * @param \AppBundle\Entity\Ville $event
+     *
+     * @return Ville
+     */
+    public function addEvent(\AppBundle\Entity\Ville $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \AppBundle\Entity\Ville $event
+     */
+    public function removeEvent(\AppBundle\Entity\Ville $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

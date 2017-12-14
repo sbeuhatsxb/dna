@@ -6,33 +6,16 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-            {{ event.titre }}
+            <div class="col-xs-6">
+                <p>{{ event.titre }}</p>
+                <p>{{ event.description }}</p>
+                <p>{{ event.descriptionComplementaire }}</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                {{ event.description }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                {{ event.descriptionComplementaire }}
-            </div>
-        </div>
-        <div class="row">
             <div class="col-xs-6">
                 <p>{{ event.lieu }}</p>
                 <p>{{ event.adresse }}</p>
                 <p>{{ event.ville }}</p>
                 <p>{{ event.cp }}</p>
-            </div>
-            <div>
-                <div class=presentation>
-                    <h2>Nous rejoindre</h2>
-                    <iframe class=map width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBpQHLJ8j0-0UFfQfvXcwYwqUxcrvRkODk&q=Wild+code+school+Strasbourg">
-                    </iframe>
-                </div>
             </div>
         </div>
 

@@ -32,6 +32,15 @@ class AppFixtures extends Fixture
 
 
 
+        $espace_au_chaud = New Espace();
+        $espace_au_chaud->setLabel("au chaud");
+        $manager->persist($espace_au_chaud);
+
+        $espace_au_froid = New Espace();
+        $espace_au_froid->setLabel("au frais");
+        $manager->persist($espace_au_froid);
+
+
         foreach ($results->events->category as $category) {
             foreach ($category->theme as $theme) {
                 foreach ($theme->event as $event) {
@@ -44,13 +53,13 @@ class AppFixtures extends Fixture
                     if($dateEvent[0] === $today || $dateEvent2 === $today2)
                     {
 
-                        if(!in_array(((string)$coulage->Ville), $villes))
+                        $nom_ville = (string)$coulage->Ville;
+                        if(!array_key_exists($nom_ville, $villes))
                         {
-                            $ville = (string)$coulage->Ville;
-                            array_push($villes, $ville);
                             $ville = New Ville();
-                            $ville->setNomVille(end($villes));
+                            $ville->setNomVille($nom_ville);
                             $manager->persist($ville);
+                            $villes[$nom_ville] = $ville;
                         }
 
                         $event = New Event();
@@ -59,12 +68,13 @@ class AppFixtures extends Fixture
                         $event->setDescription((string)$coulage->Description);
                         $event->setDescriptionComplementaire((string)$coulage->DescriptionComplementaire);
                         $event->setLieu((string)$coulage->Lieu);
-                        $event->setVille($ville);
+                        $event->setVille($villes[$nom_ville]);
                         $event->setAdresse((string)$coulage->Adresse);
                         $event->setCp((string)$coulage->CodePostal);
                         $event->setHoraire((string)$coulage->Ref_datepremiereoccurence->dateRef->Horaires);
                         $event->setTelephone((string)$meta->Contacts->Contact->Telephone);
-                        $event->setNbParticipants(rand(0,1500));
+                        $event->setNbParticipants(rand(0,100));
+                        $event->setEspace($espace_au_chaud);
                         $manager->persist($event);
 
 
@@ -114,14 +124,6 @@ class AppFixtures extends Fixture
         $etre->setLabel("sociable");
         $manager->persist($etre);
 
-
-        $espace = New Espace();
-        $espace->setLabel("au chaud");
-        $manager->persist($espace);
-
-        $espace = New Espace();
-        $espace->setLabel("au frais");
-        $manager->persist($espace);
 
 
         $manager->flush();

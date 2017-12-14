@@ -22,7 +22,6 @@ class Espace
     private $id;
 
     /**
-     * @var bool
      *
      * @ORM\Column(name="label", type="string", length=10)
      */
@@ -60,7 +59,7 @@ class Espace
     /**
      * Get label
      *
-     * @return boolean
+     * @return string
      */
     public function getLabel()
     {

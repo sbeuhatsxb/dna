@@ -10,21 +10,18 @@
 
     <div class="row">
         <h1><span> Voici vos résultats d'idées de sorties pour le 15 décembre 2017</span></h1>
-
-
     </div>
 
 
 {% for event in events %}
-<div class="row regles">
-    <div class="col-xs-4 text-center ">
+<div class="regles">
+    <div class="col-xs-4">
         <div class="thumbnail">
             <div class="caption">
                 <h3 class="text-center">{{ event.titre }}</h3>
                 <p class="text-center">{{ event.theme }}</p>
-                <p><a onclick="document.getElementById('lirelasuite').style.display = 'block';
-                this.style.display = 'none';">Lire la suite...</a></p>
-                <p id="lirelasuite">{{ event.description }}</p>
+                <button id="button_{{ event.id }}">Lire la suite</button>
+                <p id="desc_{{ event.id }}" class="cache">{{ event.description }}</p>
                 {#<p>{{ event.description }}</p>#}
                 <p class="horaire">{{ event.horaire }}</p>
                 <p><a href="{{ path('monresultat', {'id' : event.id}) }}" class="btn" role="button">Je veux en savoir plus</a>
@@ -32,6 +29,14 @@
         </div>
     </div>
 </div>
+    <script type="text/javascript">
+        $('#button_{{event.id}}').on('click', function() {
+            $('#desc_{{ event.id }}').addClass('visible');
+            $('#button{{ event.id }}').addClass('cache');
+
+        });
+
+    </script>
 {% endfor %}
 
 </div>

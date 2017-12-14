@@ -24,6 +24,14 @@ img {
     color: white;
 }
 
+.cache {
+    display: none;
+}
+
+.visible{
+    display: block;
+}
+
 
 .thumbnail{
     max-width: 350px;

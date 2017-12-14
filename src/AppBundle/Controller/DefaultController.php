@@ -50,26 +50,9 @@ class DefaultController extends Controller
                 $events = $em->getRepository('AppBundle:Event')->recherche($ville_id, $etre_id, $espace_id);
 
 
-                // foreach ($events as $event) {
-                //     var_dump($events);
-                //     if ($request->request->get('event'.$event->getID()))
-                //     {
-                //         $nbParticipants = $_POST['event'.$event->getNbParticipants()];
-                //
-                //         // $nbParticipants=$event->getNbParticipants();
-                //         var_dump($nbParticipants);
-                //         $nbParticipants++;
-                //         var_dump($nbParticipants);
-                //         $event->setNbParticipants($nbParticipants);
-                //         $em->persist($event);
-                //         $em->flush();
-                //         return $this->render('default/resultats.html.twig', array(
-                //             'events'=>$events,
-                //         ));    }
-                //
-                // }
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
+                    'form' => $form->createView(),
                 ));    }
         }
 
@@ -87,6 +70,15 @@ class DefaultController extends Controller
             return $this->render('default/resultats2.html.twig', array(
                 'event' => $event
             ));
+      }
+
+      /**
+       * @Route("/#home", name="ancre")
+       * @Method("GET")
+       */
+      public function ancreAction()
+      {
+          return $this->redirect($this->generateUrl('homepage' . '#monAncre'));
       }
 
 }

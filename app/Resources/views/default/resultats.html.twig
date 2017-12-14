@@ -10,17 +10,21 @@
 
     <div class="row">
         <h1><span> Voici vos résultats d'idées de sorties pour le 15 décembre 2017</span></h1>
+        <h3>Et si tu viens de changer d'humeur...</h3>
+
+        <p><a href="{{ path('homepage', {'_fragment': 'home'}) }}" class="btn" role="button">Nouvelle recherche</a>
+
     </div>
 
 
 {% for event in events %}
 <div class="regles">
-    <div class="col-xs-4">
+    <div class="col-xs-4 test">
         <div class="thumbnail">
             <div class="caption">
-                <h3 class="text-center">{{ event.titre }}</h3>
+                <h3 class="text-center titres">{{ event.titre }}</h3>
                 <p class="text-center">{{ event.theme }}</p>
-                <button id="button_{{ event.id }}">Lire la suite</button>
+                <button id="button_{{ event.id }}" class="center-block">Lire la suite</button>
                 <p id="desc_{{ event.id }}" class="cache">{{ event.description }}</p>
                 {#<p>{{ event.description }}</p>#}
                 <p class="horaire">{{ event.horaire }}</p>
@@ -32,7 +36,7 @@
     <script type="text/javascript">
         $('#button_{{event.id}}').on('click', function() {
             $('#desc_{{ event.id }}').addClass('visible');
-            $('#button{{ event.id }}').addClass('cache');
+            $('#button_{{ event.id }}').addClass('cache');
 
         });
 

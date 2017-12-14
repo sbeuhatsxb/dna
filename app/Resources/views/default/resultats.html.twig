@@ -1,5 +1,10 @@
 {% for event in events %}
 {{ event.theme }}
 {{ event.titre }}
+Nombre de participants {{ event.nbParticipants }}
+
+<form method="post" action="{{path("homepage")}}">
+<input name="event{{event.id}}" value="J'y participe" type="submit"></td>
+</form>
 
 {% endfor %}

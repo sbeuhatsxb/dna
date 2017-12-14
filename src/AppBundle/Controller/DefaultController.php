@@ -28,7 +28,7 @@ class DefaultController extends Controller
                 else {
                     $ville_id=null;
                 }
-                
+
                 $data_etre = $form["etre"]->getData();
                 if ($data_etre) {
                     $etre_id=$data_etre->getId();
@@ -44,23 +44,35 @@ class DefaultController extends Controller
                 else {
                     $espace_id=null;
                 }
-                // $etre_id = $form["etre"]->getData()->getId();
-                // $espace_id = $form["espace"]->getData()->getId();
-                // var_dump($espace_id);
 
-                // $ville = $em->getRepository('AppBundle:Ville')->find($ville_id);
-                // $etre = $em->getRepository('AppBundle:Etre')->find($etre_id);
-                // $espace = $em->getRepository('AppBundle:Espace')->find($espace_id);
                 $em = $this->getDoctrine()->getManager();
                 $events = $em->getRepository('AppBundle:Event')->recherche($ville_id, $etre_id, $espace_id);
-                // $events= $ville->getEvents();
-                // var_dump(count($events));
-                // $events = $em->getRepository('AppBundle:Event')->rechercheEspace($espace);
+
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
                 ));    }
-
         }
+
+        // var_dump($nbParticipants);
+        //
+        // $em = $this->getDoctrine()->getManager();
+        // $events = $em->getRepository('AppBundle:Event');
+        // var_dump($events);
+        // foreach ($events as $event) {
+        //     var_dump($nbParticipants);
+        //
+        //     if ($request->request->get('event'.$event->getID()))
+        //     {
+        //         $nbParticipants=$event->getNbParticipants();
+        //         var_dump($nbParticipants);
+        //         $nbParticipants++;
+        //         var_dump($nbParticipants);
+        //         $event->setNbParticipants($nbParticipants);
+        //         $em->persist($event);
+        //         $em->flush();
+        //     }
+        // }
+
 
         return $this->render('default/index.html.twig', array(
             'form' => $form->createView(),

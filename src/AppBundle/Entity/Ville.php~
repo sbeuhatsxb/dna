@@ -28,6 +28,10 @@ class Ville
      */
     private $nomVille;
 
+    public function __toString()
+    {
+        return $this->nomVille;
+    }
 
     /**
      * Get id

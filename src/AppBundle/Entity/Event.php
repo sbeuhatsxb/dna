@@ -103,8 +103,8 @@ class Event
     private $etres;
 
     /**
-    *@ORM\OneToMany(targetEntity="AppBundle\Entity\Espace", mappedBy="espace")
-    *@ORM\JoinColumn(nullable=false)
+    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Espace", inversedBy="espace")
+    *@ORM\JoinColumn(nullable=true)
     */
     private $espace;
 
@@ -463,5 +463,19 @@ class Event
     public function getDescriptionComplementaire()
     {
         return $this->descriptionComplementaire;
+    }
+
+    /**
+     * Set espace
+     *
+     * @param \AppBundle\Entity\Espace $espace
+     *
+     * @return Event
+     */
+    public function setEspace(\AppBundle\Entity\Espace $espace = null)
+    {
+        $this->espace = $espace;
+
+        return $this;
     }
 }

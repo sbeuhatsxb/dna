@@ -1,226 +1,167 @@
-mysql  Ver 14.14 Distrib 5.7.20, for Linux (x86_64) using  EditLine wrapper
-Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+-- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
+--
+-- Host: localhost    Database: dna
+-- ------------------------------------------------------
+-- Server version	5.7.20-0ubuntu0.16.04.1
 
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-Usage: mysql [OPTIONS] [database]
-  -?, --help          Display this help and exit.
-  -I, --help          Synonym for -?
-  --auto-rehash       Enable automatic rehashing. One doesn't need to use
-                      'rehash' to get table and field completion, but startup
-                      and reconnecting may take a longer time. Disable with
-                      --disable-auto-rehash.
-                      (Defaults to on; use --skip-auto-rehash to disable.)
-  -A, --no-auto-rehash 
-                      No automatic rehashing. One has to use 'rehash' to get
-                      table and field completion. This gives a quicker start of
-                      mysql and disables rehashing on reconnect.
-  --auto-vertical-output 
-                      Automatically switch to vertical output mode if the
-                      result is wider than the terminal width.
-  -B, --batch         Don't use history file. Disable interactive behavior.
-                      (Enables --silent.)
-  --bind-address=name IP address to bind to.
-  -b, --binary-as-hex Print binary data as hex
-  --character-sets-dir=name 
-                      Directory for character set files.
-  --column-type-info  Display column type information.
-  -c, --comments      Preserve comments. Send comments to the server. The
-                      default is --skip-comments (discard comments), enable
-                      with --comments.
-  -C, --compress      Use compression in server/client protocol.
-  -#, --debug[=#]     This is a non-debug version. Catch this and exit.
-  --debug-check       This is a non-debug version. Catch this and exit.
-  -T, --debug-info    This is a non-debug version. Catch this and exit.
-  -D, --database=name Database to use.
-  --default-character-set=name 
-                      Set the default character set.
-  --delimiter=name    Delimiter to be used.
-  --enable-cleartext-plugin 
-                      Enable/disable the clear text authentication plugin.
-  -e, --execute=name  Execute command and quit. (Disables --force and history
-                      file.)
-  -E, --vertical      Print the output of a query (rows) vertically.
-  -f, --force         Continue even if we get an SQL error.
-  --histignore=name   A colon-separated list of patterns to keep statements
-                      from getting logged into syslog and mysql history.
-  -G, --named-commands 
-                      Enable named commands. Named commands mean this program's
-                      internal commands; see mysql> help . When enabled, the
-                      named commands can be used from any line of the query,
-                      otherwise only from the first line, before an enter.
-                      Disable with --disable-named-commands. This option is
-                      disabled by default.
-  -i, --ignore-spaces Ignore space after function names.
-  --init-command=name SQL Command to execute when connecting to MySQL server.
-                      Will automatically be re-executed when reconnecting.
-  --local-infile      Enable/disable LOAD DATA LOCAL INFILE.
-  -b, --no-beep       Turn off beep on error.
-  -h, --host=name     Connect to host.
-  -H, --html          Produce HTML output.
-  -X, --xml           Produce XML output.
-  --line-numbers      Write line numbers for errors.
-                      (Defaults to on; use --skip-line-numbers to disable.)
-  -L, --skip-line-numbers 
-                      Don't write line number for errors.
-  -n, --unbuffered    Flush buffer after each query.
-  --column-names      Write column names in results.
-                      (Defaults to on; use --skip-column-names to disable.)
-  -N, --skip-column-names 
-                      Don't write column names in results.
-  --sigint-ignore     Ignore SIGINT (CTRL-C).
-  -o, --one-database  Ignore statements except those that occur while the
-                      default database is the one named at the command line.
-  --pager[=name]      Pager to use to display results. If you don't supply an
-                      option, the default pager is taken from your ENV variable
-                      PAGER. Valid pagers are less, more, cat [> filename],
-                      etc. See interactive help (\h) also. This option does not
-                      work in batch mode. Disable with --disable-pager. This
-                      option is disabled by default.
-  -p, --password[=name] 
-                      Password to use when connecting to server. If password is
-                      not given it's asked from the tty.
-  -P, --port=#        Port number to use for connection or 0 for default to, in
-                      order of preference, my.cnf, $MYSQL_TCP_PORT,
-                      /etc/services, built-in default (3306).
-  --prompt=name       Set the mysql prompt to this value.
-  --protocol=name     The protocol to use for connection (tcp, socket, pipe,
-                      memory).
-  -q, --quick         Don't cache result, print it row by row. This may slow
-                      down the server if the output is suspended. Doesn't use
-                      history file.
-  -r, --raw           Write fields without conversion. Used with --batch.
-  --reconnect         Reconnect if the connection is lost. Disable with
-                      --disable-reconnect. This option is enabled by default.
-                      (Defaults to on; use --skip-reconnect to disable.)
-  -s, --silent        Be more silent. Print results with a tab as separator,
-                      each row on new line.
-  -S, --socket=name   The socket file to use for connection.
-  --ssl-mode=name     SSL connection mode.
-  --ssl               Deprecated. Use --ssl-mode instead.
-                      (Defaults to on; use --skip-ssl to disable.)
-  --ssl-verify-server-cert 
-                      Deprecated. Use --ssl-mode=VERIFY_IDENTITY instead.
-  --ssl-ca=name       CA file in PEM format.
-  --ssl-capath=name   CA directory.
-  --ssl-cert=name     X509 cert in PEM format.
-  --ssl-cipher=name   SSL cipher to use.
-  --ssl-key=name      X509 key in PEM format.
-  --ssl-crl=name      Certificate revocation list.
-  --ssl-crlpath=name  Certificate revocation list path.
-  --tls-version=name  TLS version to use, permitted values are: TLSv1, TLSv1.1
-  -t, --table         Output in table format.
-  --tee=name          Append everything into outfile. See interactive help (\h)
-                      also. Does not work in batch mode. Disable with
-                      --disable-tee. This option is disabled by default.
-  -u, --user=name     User for login if not current user.
-  -U, --safe-updates  Only allow UPDATE and DELETE that uses keys.
-  -U, --i-am-a-dummy  Synonym for option --safe-updates, -U.
-  -v, --verbose       Write more. (-v -v -v gives the table output format).
-  -V, --version       Output version information and exit.
-  -w, --wait          Wait and retry if connection is down.
-  --connect-timeout=# Number of seconds before connection timeout.
-  --max-allowed-packet=# 
-                      The maximum packet length to send to or receive from
-                      server.
-  --net-buffer-length=# 
-                      The buffer size for TCP/IP and socket communication.
-  --select-limit=#    Automatic limit for SELECT when using --safe-updates.
-  --max-join-size=#   Automatic limit for rows in a join when using
-                      --safe-updates.
-  --secure-auth       Refuse client connecting to server if it uses old
-                      (pre-4.1.1) protocol. Deprecated. Always TRUE
-  --server-arg=name   Send embedded server this as a parameter.
-  --show-warnings     Show warnings after every statement.
-  -j, --syslog        Log filtered interactive commands to syslog. Filtering of
-                      commands depends on the patterns supplied via histignore
-                      option besides the default patterns.
-  --plugin-dir=name   Directory for client-side plugins.
-  --default-auth=name Default authentication client-side plugin to use.
-  --binary-mode       By default, ASCII '\0' is disallowed and '\r\n' is
-                      translated to '\n'. This switch turns off both features,
-                      and also turns off parsing of all clientcommands except
-                      \C and DELIMITER, in non-interactive mode (for input
-                      piped to mysql or loaded using the 'source' command).
-                      This is necessary when processing output from mysqlbinlog
-                      that may contain blobs.
-  --connect-expired-password 
-                      Notify the server that this client is prepared to handle
-                      expired password sandbox mode.
+--
+-- Table structure for table `espace`
+--
 
-Default options are read from the following files in the given order:
-/etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf 
-The following groups are read: mysql client
-The following options may be given as the first argument:
---print-defaults        Print the program argument list and exit.
---no-defaults           Don't read default options from any option file,
-                        except for login file.
---defaults-file=#       Only read default options from the given file #.
---defaults-extra-file=# Read this file after the global files are read.
---defaults-group-suffix=#
-                        Also read groups with concat(group, suffix)
---login-path=#          Read this path from the login file.
+DROP TABLE IF EXISTS `espace`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `espace` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
-Variables (--variable-name=value)
-and boolean options {FALSE|TRUE}  Value (after reading options)
---------------------------------- ----------------------------------------
-auto-rehash                       TRUE
-auto-vertical-output              FALSE
-bind-address                      (No default value)
-binary-as-hex                     FALSE
-character-sets-dir                (No default value)
-column-type-info                  FALSE
-comments                          FALSE
-compress                          FALSE
-database                          (No default value)
-default-character-set             auto
-delimiter                         ;
-enable-cleartext-plugin           FALSE
-vertical                          FALSE
-force                             FALSE
-histignore                        (No default value)
-named-commands                    FALSE
-ignore-spaces                     FALSE
-init-command                      (No default value)
-local-infile                      FALSE
-no-beep                           FALSE
-host                              (No default value)
-html                              FALSE
-xml                               FALSE
-line-numbers                      TRUE
-unbuffered                        FALSE
-column-names                      TRUE
-sigint-ignore                     FALSE
-port                              0
-prompt                            mysql> 
-quick                             FALSE
-raw                               FALSE
-reconnect                         FALSE
-socket                            (No default value)
-ssl                               TRUE
-ssl-verify-server-cert            FALSE
-ssl-ca                            (No default value)
-ssl-capath                        (No default value)
-ssl-cert                          (No default value)
-ssl-cipher                        (No default value)
-ssl-key                           (No default value)
-ssl-crl                           (No default value)
-ssl-crlpath                       (No default value)
-tls-version                       (No default value)
-table                             FALSE
-user                              root
-safe-updates                      FALSE
-i-am-a-dummy                      FALSE
-connect-timeout                   0
-max-allowed-packet                16777216
-net-buffer-length                 16384
-select-limit                      1000
-max-join-size                     1000000
-secure-auth                       TRUE
-show-warnings                     FALSE
-plugin-dir                        (No default value)
-default-auth                      (No default value)
-binary-mode                       FALSE
-connect-expired-password          FALSE
+--
+-- Dumping data for table `espace`
+--
+
+LOCK TABLES `espace` WRITE;
+/*!40000 ALTER TABLE `espace` DISABLE KEYS */;
+INSERT INTO `espace` VALUES (7,'au chaud'),(8,'au frais');
+/*!40000 ALTER TABLE `espace` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `etre`
+--
+
+DROP TABLE IF EXISTS `etre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `etre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `etre`
+--
+
+LOCK TABLES `etre` WRITE;
+/*!40000 ALTER TABLE `etre` DISABLE KEYS */;
+INSERT INTO `etre` VALUES (37,'émerveillé(e)'),(38,'aventurier(-ière)'),(39,'spectateur(e)'),(40,'gourmand(e)'),(41,'curieux(-se)'),(42,'instruit(e)'),(43,'généreux(-se)'),(44,'joueur(-se)'),(45,'chineur(-se)'),(46,'sportif(-ve)'),(47,'danseur(-se)'),(48,'sociable');
+/*!40000 ALTER TABLE `etre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event`
+--
+
+DROP TABLE IF EXISTS `event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ville_id` int(11) DEFAULT NULL,
+  `espace_id` int(11) DEFAULT NULL,
+  `theme` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `titre` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8_unicode_ci,
+  `descriptionComplementaire` longtext COLLATE utf8_unicode_ci,
+  `lieu` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `adresse` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cp` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `horaire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `telephone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nb_participants` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_3BAE0AA7A73F0036` (`ville_id`),
+  KEY `IDX_3BAE0AA7B6885C6C` (`espace_id`),
+  CONSTRAINT `FK_3BAE0AA7A73F0036` FOREIGN KEY (`ville_id`) REFERENCES `ville` (`id`),
+  CONSTRAINT `FK_3BAE0AA7B6885C6C` FOREIGN KEY (`espace_id`) REFERENCES `espace` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=305 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event`
+--
+
+LOCK TABLES `event` WRITE;
+/*!40000 ALTER TABLE `event` DISABLE KEYS */;
+INSERT INTO `event` VALUES (229,118,7,'Bals, repas et thés dansants','La Magie de Noël - Danse de Bal avec Didier',NULL,'Cher danseurs, réservez-vous le samedi 16 décembre 2017 dès 21h00 une soirée aux couleurs de Noël.\r\nOn vous attends pour une soirée de Danse exceptionnelle LA MAGIE DE NOËL ouverte à toutes les danses.\r\nLET\'S DANCE la formule Danse de Bal avec votre DJ DIDIER.\r\nLaissez vous porter par une ambiance musicale trés variée : Valse, Rock, Tango, Paso, Boléro, Rumba, West Coast Swing, Disco Fox, Bachata, Kizomba, Salsa, Samba, Cha cha cha, Valse lente\r\n\r\nRdv à l’Espace Vauban de Mundolsheim – Ouverture des portes dés 21h00\r\n\r\nEntrée : 8,00 € de participation\r\n\r\n( Avec tampon sur la carte de membres )\r\n\r\nConcept : on s’amuse, on profite, on se détend, et on danse sans complexe !!\r\n\r\nUn seul objectif, passer une bonne soirée au son des plus belles musiques.','Espace Vauban','1 rue Vauban','67450','à 21h','06.68.88.58.00',85),(230,119,7,'Cinéma','Merlin l\'enchanteur','Le jeune Arthur / Wart reçoit l\'enseignement de l\'enchanteur Merlin, avec qui il va vivre des aventures magiques, avant de devenir Roi d\'Angleterre.',NULL,'Relais culturel La Saline','place du Général-de-Gaulle','67250','à 17h','03.88.80.47.25',78),(231,120,7,'Cinéma','Julius et le père noël','Noël reste éternellement lié aux croyances de l\'enfance. Julius, qui vit dans l\'Orphelinat des Grelots, aime ce moment plus que tout car il est persuadé que c\'est le Père Noël qui l\'y a déposé quand il était bébé. Un jour Julius est transporté dans un monde magique...','Noël reste éternellement lié aux croyances de l\'enfance. Julius, qui vit dans l\'Orphelinat des Grelots, aime ce moment plus que tout car il est persuadé que c\'est le Père Noël qui l\'y a déposé quand il était bébé. Un jour Julius est transporté dans un monde magique...','Cinéma de la salle polyvalente de la Lauter','Allée des Cygnes','67630','à 17h','03.88.94.80.18',59),(232,120,7,'Cinéma','Le sens de la fête','Max est traiteur depuis trente ans. Des fêtes il en a organisé des centaines, il est même un peu au bout du parcours. Aujourd\'hui c\'est un sublime mariage dans un château du 17ème siècle, un de plus, celui de Pierre et Héléna. Max a tout coordonné : il a recruté sa brigade de serveurs, de cuisiniers','Max est traiteur depuis trente ans. Des fêtes il en a organisé des centaines, il est même un peu au bout du parcours. Aujourd\'hui c\'est un sublime mariage dans un château du 17ème siècle, un de plus, celui de Pierre et Héléna. Max a tout coordonné : il a recruté sa brigade de serveurs, de cuisiniers, de plongeurs, il a conseillé un photographe, réservé l\'orchestre, arrangé la décoration florale, bref tous les ingrédients sont réunis pour que cette fête soit réussie...','Cinéma de la salle polyvalente de la Lauter','Allée des Cygnes','67630','à 20h','03.88.94.80.18',77),(233,121,7,'Concert, musique','Tricky',NULL,'Tricky, le sorcier des machines, a sorti un nouvel album exceptionnel et renoue avec ses origines.\r\nTrip Hop Veteran en Ununiform pour échapper au rôle, insaisissable exilé résolu actuellement fixé à Berlin, refondant sans cesse son geste autour de quelques fondamentaux qui valent racines et le voient retrouver aujourd’hui avec bonheur Martina Topley-Bird, Tricky a noué une relation singulière avec La Laiterie devenue étape de prédilection dans sa quête sans relâche du déséquilibre moteur.\r\n\r\nLe nouvel album de Tricky «Ununiform» est sorti le 22 septembre.','La Laiterie','13 rue du Hohwald','67000','à 20h','03.88.23.72.37',93),(234,122,7,'Concert, musique','Concert gospel','par le groupe Unbuntu Gospel',NULL,'église St Gall',NULL,'67220','à 20h','06.31.96.30.74',139),(235,123,7,'Concert, musique','Concert de Noël','avec Anita et Alexandra Hofmann Reservations et','Anita et Alexandra Hofmann   font le seul arret en Alsace a Durrenbach pour leurs tournée de noel nommée SEELE MOMENTE ou les deux soeurs vont montrer leurs talent vacal et instrumental et sont accompagnée par deux ténor .Elles vont vous faire partager leurs Noel \r\nRenseignement aux 03 88 73 83 02 et aux  06 80 12 23 13','Eglise saint Barthelemy','rue de Morsbronn','67360','à 20h','06.42.16.63.77',161),(236,124,7,'Concert, musique','Heure de musique','Zoom sur... La Blösmusik alsacienne avec Alexis Klein, professeur à l\'EMMDH et chef d\'orchestre et avec la participation de musiciens de la Concordia de Dauendorf. Sur inscription.','La « musique folklorique à vents » rythme\r\ndepuis longtemps les fêtes villageoises\r\nalsaciennes. Sur le déclin il y a encore\r\nquelques années, elle revient en force grâce\r\nà de jeunes groupes qui se sont formés ces\r\ndernières années et de jeunes compositeurs\r\nreprenant le flambeau aux Boistelle, Beck et\r\nautres. Elle fait l’objet de nombreux concerts\r\nqui drainent de plus en plus de monde. Petit\r\ntour d’horizon de cette pratique et de ce\r\npatrimoine alsacien qui se modernise et attire\r\nà nouveau jeunes et moins jeunes.','À la médiathèque de la Vieille-Ile','24 rue du Maire-André-Traband','67500','à 15h','03.88.90.68.10',188),(237,125,7,'Concert, musique','«Üs Exil ze Epiphanias» une histoire racontée et chantée en alsacien','« Üs Exil ze Epiphanias », spectacle conté et chanté par Roland Engel en alsacien d\'après une libre adaptation de « Les chemins de l’Exil », un texte écrit par Michel Guerrier. Avec la participation de : Isabelle Loeffler polyinstrumentiste et chant – Vincent Bor à la contrebasse et Jean-Luc Lamps.','L’auteur en précisait  alors : « Cette revisitation d’un vieux récit biblique m’a été inspirée par les évènements actuels d’exodes de  populations pauvres et des massacres d’innocents.»\r\nJésus, il est vrai, a connu l’exil, lui aussi, et dès le lendemain même de sa naissance. Les raisons en étaient politiques, et ne sont, au fond, guère différentes de celles qui ont occasionné d’importants flux migratoires au début de ce XXIème siècle. Le sentiment d’avoir survécu là où d’autres ont perdu la vie, a-t ‘il put générer chez lui ce sentiment de culpabilité dont souffrent parfois les réfugiés ? Il s’agit certes d’un postulat, mais on peut légitimement penser que cet épisode de sa vie, sans doute maintes fois raconté par ses parents, n’a pas été sans incidence sur la construction de sa personnalité et sur le message qu’il n’a cessé de proclamer pendant son ministère.','à l\'église St-Michel','5 rue de l\'Eglise','67240','à 18h','06.89.99.10.20',107),(238,121,7,'Concert, musique','«Dans l\'attente de Noël» - L\'Eau Vive',NULL,'Dans le cadre des animations musicales «Strasbourg, capitale de Noël», le groupe vocal L\'Eau Vive présentera un concert de Noël sous la direction de Jean Robert Guirao et accompagné au piano par Jean Paul Stocky.','Église catholique Saint-Léon','rue Saint-Dié','67000','à 20h30','06.84.19.35.92',39),(239,121,7,'Concert, musique','Ensemble Hortus Musicalis - Pastorale de Noël','Au programme : \r\nMarc-Antoine Charpentier (1643-1704) La Pastorale de Noël H 483 ; Louis-Claude Daquin (1694-1772) Une jeune pucelle ; CIaude Balbastre (1724-1799) À la venue de Noël.','L’Ensemble Hortus Musicalis, a été fondé en 1989 par Jean-Luc Iffrig. Cette formation de musique baroque à géométrie variable réunit des chanteurs et instrumentistes de qualité, rompus à l’interprétation aux répertoires de musique ancienne d’Alsace, d’Allemagne, d’Italie et de France. \r\n\r\nLa célébration de Noël occupe une place centrale dans l’œuvre de M.-A. Charpentier et plus généralement dans la vie religieuse de la France du 17e  siècle. Cette fête fortement ancrée dans les traditions populaires suscitait une très grande ferveur populaire. Ce programme musical mis en espace évoquera l’histoire de la Nativité, sous la plume d’un Marc-Antoine Charpentier hautement inspiré. Son art de la composition côtoie une sensualité et une ferveur hors-normes créant un moment de grâce infinie, naïve et bienveillante, à l’opposé des ors de la cour de Versailles.','Église Sainte-Aurélie','rue Martin-Bucer','67000','à 20h30','03.90.41.02.02',144),(240,126,7,'Concert, musique','Concert de Noël','Choeur d\'Hommes de Plobsheim.','La Chorale accueille pour cet événement le Groupe des enfants de l\'école du Château de Plobsheim et la soliste Cécile Friedmann de la Chorale d\'Erstein.\r\nVenez chanter avec nous.','Église protestante','3 rue de l\'Eglise','67115','à 17h','03.88.98.56.12',17),(241,127,7,'Concert, musique','Concert de Noël','La chorale Adomisol de l’Association des Enseignants de la Circonscription de Molsheim propose un florilège de chants de Noël traditionnels, negro spirituals, classiques et inédits. Plateau pour l’épicerie solidaire « Grain de Sel » de Caritas Molsheim.',NULL,'À l\'église Saints Côme et Damien',NULL,'67120','à 20h30','03.88.50.08.47',91),(242,128,7,'Concert, musique','«Christmas & Love» - Cotton Fields','Ce programme comprend des Gospels, Spirituals, Jazz-vocal et Noëls traditionnels. En bref, le thème de Noël et de l’Amour qui se rencontrent en voyageant au gré des sonorités riches et diverses de la musique Afro-Américaine, alternant douceur méditative et énergie communicative.','Présent sur la scène musicale en Alsace depuis octobre 1989, l\'ensemble vocal COTTON FIELDS réunit 12 chanteurs expérimentés autour des musiques noires américaines. \r\nSous la direction artistique de Pierre-Luc PFRIMMER, entouré de professionnels du spectacle (musiciens, chorégraphes, techniciens du son et de la lumière...), Cotton Fields s’attache à la relecture innovante des musiques afro-américaines (spirituals, hymnes afro-américains, gospels, jazz-vocal, vocal-pop...). \r\nPartager avec le public l’émotion immédiate de ces musiques, de la prière à la jubilation, avec le souci permanent de la qualité musicale, de la présence scénique, d’une identité artistique forte, tel est le fondement de notre ensemble.','Église catholique',NULL,'67204','à 20h','03.88.34.56.82',52),(244,130,7,'Concert, musique','Concert de Noël','avec  la chorale Voix-Si Voix-la Strasbourg et la Chorale St Luc de Souffelweyersheim. Chants pour un voyage de Noël dans le monde. Plateau au bénéfice de l\'association «Enfants de Marthe».',NULL,'Église protestante St-Luc','5 rue des Sept Arpents','67460','à 20h','06.33.07.01.45',42),(245,124,8,'Concert, musique','Mélody Gospel en concert',NULL,NULL,'au marché de Noël',NULL,'67500','de 15h à 17h','03.88.73.30.41',10),(246,131,7,'Concert, musique','Concert de Noël par «Obernai chante»','qui interprète des chansons de France, d’ailleurs et de toujours, un chœur mixte de 60 choristes, créé par François Erdrich, il y a 32 ans (Présidente-Francine Mahler), don pour le soutien des «Architectes de l\'urgence» (bâtir des murs pour reconstruire des vies)','En effet, suite au désastre qu\'a laissé derrière lui l\'ouragan Irma, nous voulions apporter une petite pierre à la reconstruction de St-Barthélémy et St-Martin.','église Saint-Étienne',NULL,'67560','à 20h','03.88.50.24.09',87),(247,132,7,'Concert, musique','Concert de Noël de l\'Ecole de Musique de La Wantzenau','Sous la direction de Nathalie Faillet.','Les fêtes de Noël se préparent aussi en chansons et en musiques. Les élèves de l’École de Musique feront résonner ces airs de fêtes, traditionnels ou actuels, dans des formations vocales et instrumentales variées.\r\n\r\nDe quoi réchauffer tous les coeurs et se plonger en douceur dans l’ambiance de Noël...','Espace culturel Le Fil d\'Eau','quai des Bateliers','67610','à 18h','03.88.59.22.59',72),(248,133,7,'Concert, musique','Concert \"Noëls & Carols\"','Concert de Noël des Petits Chanteurs de Saverne.','La Manécanterie des Petits Chanteurs de Saverne dirigée par Edlira Priftuli propose un concert de Noël aux sonorités franco-anglaises, de musique populaire autant que savante (Britten, Poulenc, Fauré). Des Noëls et des « Christmas carols » qui ont traversé le temps et nous ont enchantés ou émus aux larmes, et qui nous plongeront avec bonheur dans l’ambiance feutrée aux senteurs d’orange et de cannelle  des Noëls de notre enfance.\r\n\r\nRenseignements et contacts : \r\nwww.petits-chanteurs-de-saverne.fr\r\nmane@petits-chanteurs-de-saverne.fr','À l\'église des Récollets','7 Rue Poincaré','67700','à 20h','0000000000',157),(249,134,7,'Concert, musique','Les Rousseroles chantent Noël','Entrons ensemble en cette période magique avec les concerts de Noël proposés par la chorale Les Rousserolles.','Un troisième concert se tiendra le samedi 6 janvier 2018 à 19h30 en l\'église Saint Louis de Fort-Louis.\r\nUn programme de chants de Noël traditionnels, modernes et de chants de variétés vous permettrons d\'ouvrir la route aux festivités avec émotions et entrain.','Église St-Laurent',NULL,'67770','à 20h','06.80.63.53.50',173),(250,135,7,'Concert, musique','Concert de Noël avec Mely Melody','dans le cadre des concerts caritatifs organisés dans le Pays de Sainte-Odile, concert de Noël avec le groupe vocal Mély Mélody, constitué de 9 chanteurs amateurs, originaires de Strasbourg et environs, le plateau ira à l\'épicerie sociale Obern\'aide et aux Amis des pensionnaires des Berges de l\'Ehn',NULL,'église Saint-Martin','75 rue du Général de Gaulle','67880','à 20h','03.88.95.64.13',132),(251,121,7,'Concert, musique','Stars','Direction : Anne-Juliette Meyer, \nJean-Philippe Billmann.	\n','Chant grégorien, musique contemporaine, voix, instruments à cordes : un kaléidoscope sonore au cœur de l’hiver.','Cité de la musique et de la danse','1 place Dauphine','67000','à 20h','03.68.98.51.00',171),(252,121,7,'Concert, musique','Veillée musicale de l\'Avent','Concert d\'orgue par Simon Prunet-Foch, organiste titulaire de l\'église protestante Saint-Pierre-le-Jeune.',NULL,'Église catholique Saint-Pierre-le-Vieux','place Saint-Pierre-le-Vieux','67000','à 15h','03.88.32.39.06',145),(253,136,7,'Concert, musique','«Le concert sans retour»','par Cinq de cœur, \r\nwww.Cinqdecoeur.Com','Cinq de Coeur célèbre le répertoire allemand qui fait les délices des mélomanes de tous bords : Brahms, Schubert, Bach.\r\nMais... Que se passe-t-il ? Sont-ils devenus fous ?!\r\nScorpions bouscule Brahms, Mylène Farmer tutoie Schubert,\r\nNina Simone se confronte au « Chanteur de Mexico », Queen tient la dragée haute à Bach...\r\nNos cinq acrobates de la voix se livrent à un numéro dont ils perdent tout contrôle !\r\nAvec humour et une technique irréprochable, Cinq de Coeur s’est inventé un genre rigoureux comme le classique, débridé comme le music-hall.\r\nNomination Molières 2015 Théâtre Musical.\r\nPrix du public off Avignon 2015.\r\nDurée : 1h20. Grande Scène. Tout public','Le Point d\'Eau','17 allée René Cassin','67540','à 20h','03.88.30.17.17',20),(254,124,7,'Concert, musique','Concert final Les Rockeurs ont du Coeur 2017','Avec Van Hammer Stone puis Lost Bastards puis Los Disidentes del Sucio Motel.','Cette année le groupe Van Hammer Stone ouvrira les festivités avec son show de Stoner Rock explosif travaillé lors d\'une résidence au Millénium au mois d\'octobre. Le groupe strasbourgeois Lost Bastards viendra ensuite défendre son premier album de Heavy Rock intitulé « Face the sun » sorti le 2 novembre dernier. Enfin, ce sont les célèbres Los Disidentes del Sucio Motel, qui, après avoir foulé la scène du Hellfest au mois de juin, viendront présenter les titres tirés de leur dernier et troisième album très Rock Metal « Human Collapse ». Le groupe, fondé à Bischwiller, présentera pour l\'occasion le concert vidéo qu\'il a conçu lors d\'une résidence au Millénium en février 2017.','À la salle du Millenium','6 place Robert-Schuman','67500','à 20h','09.83.03.40.93',80),(255,137,7,'Concert, musique','Les Célestins',NULL,'Les Célestins continuent de parcourir un répertoire où ne cessent de se croiser les genres et les plaisirs partagés. \r\nNouveau venu dans le répertoire des Célestins, Wailing Blues rassemble ce que le jazz désigne d’universel : une mélancolie dynamique et un battement lancinant rivé à un tempo qui prend son temps. Le rendez-vous annuel au Cheval Blanc sera cette année encore un des moments forts de leur voyage long déjà de 45 années à jouer ensemble.','Cheval Blanc','25 rue Principale','67300','à 20h30','03.88.83.84.85',82),(256,138,7,'Concert, musique','Concert de Noël','Concert organisé par l\'Entente Musicale de Keskastel avec la participation de la Chorale des hommes de Harskirchen, les enfants de l’école primaire de Keskastel, la chorale Chœur en Chanté de Waldhambach et l\'Entente Musicale. Entrée libre, dons au profit de l\'association Les Diplômes de TED.','TED = Troubles Envahissant de Développement.\r\nMaladie dont est atteint un enfant de Keskastel.\r\nL\'association est basée à Achen.','Église catholique Saint Nicolas','Rue de la Libération','67260','à 20h','06.06.55.83.66',177),(257,139,7,'Concert, musique','Contes,Chansons et Crayons d\'Artistes','Charly Damm, Alain Kermann et François Nadler, chanteurs-instrumentistes, assistés du dessinateur François Abel viennent du Bitcherland pour partager avec vous contes, légendes et traditions en cette période de l\'année pas comme les autres. Une veillée de Noël où le temps va s\'arrêter.',NULL,'Église protestante','Rue du Mal Foch','67340','à 20h','03.88.89.47.20',166),(258,140,7,'Concert, musique','Concert de Noël','Trois chanteurs réunis autour de leur culture musicale pop mais aussi autour de leur origine alsacienne et des chansons qui ont marqué leurs Noëls.','Sous le sapin, \"JUMBLE\" pare le Noël alsacien et ses traditions de chansons du monde et de classiques revisités. 3 voix, une guitare et quelques percussions habillent en toute simplicité le Noël de nos jours et celui du passé... »\r\n\r\nLe trio « JUMBLE » est composé de 3 musiciens et chanteurs professionnels. \r\nDepuis 4 ans nous allons à la rencontre du public Alsacien et d\'ailleurs afin de proposer à tous un répertoire de chants de Noël traditionnels et revisités à la sauce \"musique actuelle\". Nous avons déjà eu le plaisir de nous produire dans de nombreuses communes et villes : Strasbourg, Sélestat, Rosheim, Sarre-Union, St Louis, Marlenheim, Schirmeck, Grendelbruch,Obernai... \r\nAprès avoir eu un accueil très chaleureux nous avons également sorti notre premier album de Noël \"quand la pop et les traditions s\'en mêlent\".','Espace Culturel LA SCENE','11 rue de Haguenau','67350','à 20h','03.88.05.60.60',45),(259,141,7,'Concert, musique','Concert Noël Gospel et Negro Spirituals Les Messagers','Noël est la période particulièrement propice à l’écoute d’airs poignants, rythmés, émouvants, nostalgiques, ou joyeux. Les Messagers vont emporter leur auditoire dans un magnifique voyage musical spécial Noël avec leurs Negro Spirituals et Gospels Songs.','Flambeaux d’une musique étrange et fascinante née de l’esclavage du peuple noir, « Les Messagers » chantent leurs negro spirituals et gospels songs depuis 1968 et font vibrer un public conquis d’avance par leur prestation proche de la perfection. Ils proposent un voyage spirituel, musical et chantant à travers deux siècles de création artistique.... Cette histoire, les sept amis Messagers l’interprèteront grâce aux negro spirituals et gospel songs, mariant subtilement piano, claviers, guitares et batterie à leurs voix chaudes et envoûtantes. Ils seront, comme toujours, enrobés d’effets lumineux tendres et sobres, propres à la méditation ou à l’explosion de joie. Laissez-vous tenter par la sensibilité, la sincérité et la chaleur des « Messagers\" !\r\nUn très beau concert de Noël à ne pas rater !','Eglise Saints Pierre et Paul',NULL,'67270','à 20h','03.88.73.18.90',197),(260,142,7,'Expositions','«Les animaux et la guerre»','Exposition organisée par la société d\'histoire de Reichshoffen.',NULL,'Musee historique et industriel, Musée du fer','9 rue Jeanne d\'Arc','67110','de 14h à 18h','03.88.80.34.49',50),(261,143,7,'Expositions','Maison des Arts',NULL,NULL,'à la Maison des Arts','19 rue des Charrons','67240','de 14h à 17h','03.88.06.46.59',123),(262,143,7,'Expositions','Musée de la Laub',NULL,NULL,'au Musée de la Laub','place de la Mairie','67240','de 14h à 17h','03.88.53.99.39',55),(263,119,7,'Expositions','La magie des automates','Une mise en scène de l’atelier du calendrier de l’Avent avec des lutins travaillant sur les différents corps de métiers, sous les ordres du Père Noël.\r\nAvec la contribution des fenêtres d’Arts et Peinture.',NULL,'Salle voûtée de la Mairie','2 rue des Barons de Fleckenstein','67250','de 16h à 18h','03.88.80.40.42',127),(264,144,7,'Expositions','Exposition-vente','des œuvres de Véronique Heintz (céramiste), Monique Meyer (peintre sous verre) et jenny Niess (sculptrice de fil de fer)','venez-découvrir les ateliers d\'artistes qui ouvrent leurs portes à Saint-Nabor (les 10 et le 11 décembre) avec vin chaud, bredele et brasero. Face Book: le70astnaborterreetverre','Le 70','70 rue du Général de Gaulle','67530','de 14h à 19h','0781064470 et 0601910065',16),(265,145,7,'Fêtes, carnaval, kermesse','Fête de la Ste-Lucie et les potiers','Les potiers de Soufflenheim vous accueillent dans leurs boutiques pour célébrer la Ste-Lucie, fête de la lumière. A cette occasion, les magasins se pareront de chemins lumineux. Les artisans vous accueilleront en toute convivialité dans une ambiance de fête.','Sainte-Lucie fût introduite dans le folklore du Noël alsacien à travers le personnage du Christkindel que vous verrez certainement accompagné du Hans Trapp  au détour des ruelles de la cité de potiers. Jeu de piste, balades nocturnes aux lampions, lâcher de lanternes célestes, musiques et chants de Noël.. Feu de joie et buvette à l\'Oelberg (ancien cimetière fortifié). Renseignement et réservation auprès de l\'office de tourisme au 03 88 86 74 90','au centre-ville',NULL,'67620','de 15h à 20h','03.88.86.74.90',195),(266,146,7,'Jeux, concours','Concours de belote du Ried','en individuel. Nombreux lots à gagner. Inscription à partir de 19h30, début de la partie à 20h30, petite restauration.',NULL,'Salle des fêtes','3 rue du Château','67600','à 20h','06.30.17.59.05',87),(267,147,8,'Marchés, brocantes, vide-greniers','Marché de Noël des gourmandises','Arômes et effluves de Noël se mêleront à l’ambiance artisanale qui règne dans la cité thermale. Pour finaliser vos desserts ou vos plats de fêtes, faites confiance aux artisans venus vous proposer leurs délicieuses gourmandises, tantôt salées, tantôt sucrées...',NULL,'Place du Bureau-Central','place du Bureau-Central','67110','de 14h à 19h','03.88.80.89.70',3),(268,148,7,'Marchés, brocantes, vide-greniers','Marché de Noël','dans les chalets regroupés autour du grand sapin de la place de l\'hôtel de ville et exposition artisanale dans la salle du 1er étage de la Metzig',NULL,'Salle de la Metzig et chalets','Place de l\'Hôtel de ville','67120','de 14h à 18h30','03.88.48.83.28',101),(269,149,8,'Marchés, brocantes, vide-greniers','Marché de Noël','présence d\'artisans des métiers de la bouche, de l\'art de la table, de l\'art floral et d\'artistes, animations, concerts et ateliers seront également au rendez-vous','Des maisonnettes en bois servent de décor aux 1001 savoir-faire des artisans alsaciens. Des crèches sculptées, des couronnes de l\'Avent, des livres, des confitures, des bijoux,... Autant de produits que vous pourrez offrir pour faire plaisir.','Place de l\'Hôtel de Ville, 66 Grand\'Rue, parking de l\'Essieu',NULL,'67140','de 10h à 19h30','03.88.08.66.55',127),(270,150,7,'Marchés, brocantes, vide-greniers','Marché de noël au pays des bûcherons','Le charmant village de montagne vous accueille dans un tout nouveau décor féérique. Les dimanches : concerts de chants de Noël et de Gospel à 17 à l\'église St-Philippe et St-Jean.','Marché de noël au cœur du village.Sculptures sur bois par des bûcherons.\r\nDimanche 10/12  concert du «Chœur des Anges»\r\nDimanche 17/12 concert de Noël par le groupe «Jumble Trio»','au centre du village',NULL,'67190','de 15h à 20h','03.88.21.55.00',148),(271,122,8,'Marchés, brocantes, vide-greniers','En marche vers Noël','animation de Noël avec artisans locaux, notamment sur le bois, vente de produits locaux, animations ludiques pour les enfants et petite restauration.',NULL,'Place de la mairie',NULL,'67220','de 16h à 23h','06.31.96.30.74',119),(272,119,8,'Marchés, brocantes, vide-greniers','Marché de Noël','Vente de gourmandises, décorations de Noël et petite restauration. Les petits chalets de bois disposés sur la place vous plongent dans une ambiance chaleureuse.',NULL,'Place du Général de Gaulle',NULL,'67250','de 16h à 19h','03.88.80.40.42',17),(273,151,8,'Marchés, brocantes, vide-greniers','Marché de Noël','organisé par l’USEP et les parents d’élèves. Les enfants inviteront le public à chanter avec eux des chants de Noël traditionnels et contemporains à 18h à l\'église Saint-Léonard.','Au groupe scolaire, après avoir passé l\'arche  de Noël, le public aura accès aux stands (ouverture du marché 17h) . On y trouvera des bricolages de Noël réalisés par les ateliers petites mains et grandes mains de l\'école ainsi que des bredele des mamies.\r\nD\'autres artisans locaux seront présents et présenteront leur production \"faits mains\". Les producteurs locaux des produits du terroir seront aussi présents et permettront de finaliser soit les derniers cadeaux, soit les repas de fête.\r\nOn pourra aussi déguster les bonnes gaufres de l\'amicale des donneurs de sang ainsi que soupe, saucisses, vin chaud, café, jus de pomme chaud. \r\nAu dire des organisateurs, le Père Noël figure aussi parmi les invités.','Cour du groupe scolaire','Ecole Primaire 2 rue de l\'école','67330','de 17h à 22h','06.88.59.48.48',0),(274,152,8,'Marchés, brocantes, vide-greniers','Marchés de Noël','L\'association \"Le bonheur est dans le pré\" propose quatre marchés de Noël. De nombreux producteurs et artisans présenteront des produits locaux et des articles originaux.\r\nPetite restauration à consommer sur place ou à emporter.','Passage du St-Nicolas accompagné de ses Elfes le 9 décembre et animations musicales lors des quatre samedis.','Place du monument aux morts','rue du Général Leclerc','67440','de 08h45 à 13h','06.88.12.13.99',120),(275,124,8,'Marchés, brocantes, vide-greniers','Marche de Noël de la SPA','La SPA de Haguenau tiendra un stand où vous trouverez des bredeles, des couronnes de l\'avent, des décos de table, des springerles, de la confiture et de la bonne humeur!!! le profit de la vente est entièrement reversé au refuge.',NULL,'Dans la cour de l\'Oie','impasse de l\'Oie','67500','de 11h30 à 19h','03.88.25.16.32',59),(276,153,8,'Randonnées, balades, visites guidées, orientation','Vente de sapins de Noël','organisé par l’A.S. Niedernai, venez choisir votre sapin de Noël, stand de boissons chaudes',NULL,'place du Maréchal Leclerc',NULL,'67210','de 15h à 18h','06.16.87.23.16',11),(277,140,7,'Randonnées, balades, visites guidées, orientation','Visite de la collection de Père Noël de Mathéo','Mathéo Schaub collectionne les Pères Noël depuis son plus jeune âge. Il a également décoré sa maison. Il accueillera tous les samedis les visiteurs à partir de 18h.',NULL,'Chez Mathéo Schaub','13 rue des Roitelets','67350','à 18h','03.88.21.55.00',7),(278,121,8,'Randonnées, balades, visites guidées, orientation','HEAR - Visites guidées','Visite sur inscription au moins 24 heures à l\'avance par téléphone (03 69 06 37 77) ou par mail (strasbourg1880@hear.fr).','L\'invention d\'un modèle». Chaque semaine, des étudiants de la HEAR (ex-École des arts décoratifs de Strasbourg) font découvrir leur école à un groupe de visiteurs. En évoquant l’histoire des Arts décos de Strasbourg, ils emmènent les visiteurs dans les ateliers qui racontent cette histoire.  \r\nUne plongée dans le passé ! Laboratoire d’Europe, vaste manifestation pluridisciplinaire, offre à Strasbourg un ensemble d’expositions et de manifestations culturelles à travers la ville. À cette occasion, la HEAR a souhaité se replonger dans son passé via deux temps d’exposition : «L’invention d’un modèle. L’École des arts décoratifs de Strasbourg de 1890 à 1930», dans le bâtiment de l’école et «1890–2017 à La Chaufferie», galerie d\'exposition de l\'École.','Haute école des arts du Rhin (HEAR)','1 rue de l\'Académie','67000','à 17h','03.69.06.37.77',132),(279,121,7,'Randonnées, balades, visites guidées, orientation','Visite commentée de l\'exposition «Vivre à Koenigshoffen à l\'époque romaine»','Découvrir l\'exposition «Vivre à Koenigshoffen à l\'époque romaine» avec un guide conférencier. Durée : 1h30.',NULL,'Musée archéologique','2  place du Château','67000','à 15h','03.68.98.74.80',168),(280,121,7,'Randonnées, balades, visites guidées, orientation','Visite et explications de «Déflagrations»',NULL,'«Déflagrations» est une exposition présentant les dessins d’enfants témoins et victimes des guerres, des conflits et crimes de masse depuis plus d\'un siècle. \r\nA cette occasion, l\'UNICEF sera présent pour répondre à vos questionnements et vous proposer une visite explicative de l\'exposition.','Médiathèque André Malraux (salle de conférences)','1 presqu\'île André-Malraux','67000','de 11h à 12h30','07.85.94.65.69',180),(281,121,8,'Randonnées, balades, visites guidées, orientation','«La vieille ville, de la cathédrale à la Petite France»',NULL,'Visite conférence d\'une durée d\'1h30.','Départ office du tourisme','17 place de la Cathédrale','67000','à 16h30','03.88.52.28.28',63),(282,121,8,'Randonnées, balades, visites guidées, orientation','«Parcours de Noël»',NULL,'Visite conférence d\'une durée d\'1h30.','Départ office du tourisme','17 place de la Cathédrale','67000','à 16h30','03.88.52.28.28',138),(283,143,8,'Randonnées, balades, visites guidées, orientation','Flânerie théâtralisée autour de la magie de Noël','Pour chaque flânerie théâtralisée, 8 tableaux vous transporteront dans la magie du Noël alsacien.','Laissez-vous guider et accompagnez le Père Noël dans sa tournée. A ses côtés, vous côtoierez ses apprentis lutins qui doivent encore faire leur apprentissage et savoir sur le bout des doigts les contes et légendes de Noël.','Dans la cour du «Lion d\'or»',NULL,'67240','à 14h30','03.88.06.59.99',125),(284,124,7,'Randonnées, balades, visites guidées, orientation','Visites VIP','Chaque mois, venez découvrir en VIP une sélection de documents remarquables issus de nos\r\ncollections patrimoniales. Profi tez d’un accès privilégié à des ouvrages d’exception. Gants blancs\r\n(fournis sur place) de rigueur !','Nouveauté ce trimestre, nos visites sont thématiques :\r\n• septembre et octobre : Martin Luther ;\r\n• novembre et décembre : « Trésors des bibliothèques, archives et musées » (une sélection\r\nd’ouvrages de l’édition des Nuées Bleues).\r\n\r\nJeudi 12 octobre de14h à 15h et mardi 12 décembre de 14h à 15h visite en allemand.\r\n\r\nPublic : Adultes / Accès : Sur inscription (limité à une par mois)','à la médiathèque de la Vieille-Ile','24 rue du Maire-André-Traband','67500','de 10h à 11h','03.88.90.68.10',84),(285,154,8,'Randonnées, balades, visites guidées, orientation','Visite guidée de l\'ouvrage de la ligne Maginot',NULL,'Construit entre 1930 et 1935, l’ouvrage du Four-à-Chaux de Lembach est un site majeur de la Ligne Maginot en Alsace. Ce gros ouvrage de montagne compte environ 4,5 km de galeries souterraines et s\'étend sur une superficie de 26 ha. Il a la particularité d\'être équipé d\'un plan incliné unique.\r\nJusqu\'au 31/03/18 ouvert uniquement les samedis et dimanches (fermé en semaine). Départ de la visite guidée à 14h30 (compter entre 1h30 et 2h00 de visite).','Four à chaux, ouvrage de la ligne Maginot','Route D65','67510','16:00','03.88.94.43.16',18),(286,133,8,'Randonnées, balades, visites guidées, orientation','Balades contées de Noël','L’Office de Tourisme de Saverne & sa Région organise des balades contées de Noël dans le centre-ville de Saverne.\r\nCes visites guidées nocturnes invitent à la découverte des traditions, des coutumes et des personnages emblématiques de Noël.','Saint Nicolas est à l’honneur le 2 décembre 2017, Sainte Lucie le 9 décembre 2017 et les légendes de Noël le 16 décembre 2017.\r\n\r\nPassez un moment convivial en famille ou entre amis, tout en admirant le Sentier de Lumières, la patinoire et les chalets d’artisans.\r\n\r\nRendez-vous à 16 h 30 à l’Office de Tourisme de Saverne & sa Région.','Rendez-vous à l\'Office de Tourisme de Saverne & sa Région','37 Grand\'rue','67700','à 16h30','03.88.91.80.47',6),(287,121,7,'Rencontres, conférences','René Schickele et l\'héritage rhénan',NULL,'Quel est l’héritage rhénan évoqué dans Das Erbe am Rhein, roman des années 20 de René Schickele ? Pour lui, le Rhin est l’une des sources de l’Europe. La lecture de son œuvre  révèle une idée de l’Europe riche, et en (r)évolution permanente. Quel visionnaire !\r\nRencontre avec Charles Fichter, Jean Lorrain, Aline Martin et l\'association A livre ouvert, le samedi 16 décembre, à 17h30, à la Librairie Kléber.','Librairie Kléber, salle Blanche','1 rue des Francs-Bourgeois','67000','à 17h30','03.88.15.78.90',60),(288,121,7,'Rencontres, conférences','Olivier Delcroix et Le cinéma d\'action américain',NULL,'De Buster Keaton à Fast and Furious en passant par Rocky, Terminator ou Piège de cristal, le cinéma d’action américain est devenu au fil des décennies un pilier de la pop culture, voire de la culture tout court.\r\nDésigné pour la première fois comme tel en 1982 à la sortie de Rambo, l’action movie remonte pourtant à la naissance même du cinéma, ayant nourri la plupart des gens hollywoodiens.\r\n\r\nRencontre avec Olivier Delcroix, le samedi 16 décembre, à 16h30, à la Librairie Kléber.','Librairie Kléber, salle Blanche','1 rue des Francs-Bourgeois','67000','à 16h30','03.88.15.78.90',184),(289,121,7,'Rencontres, conférences','Daniel Rondeau et les Mécaniques du chaos',NULL,'Daniel Rondeau croit au pouvoir des mots. Sa fresque crépusculaire et polyphonique brasse l’histoire et l’actualité, interrogeant les dérèglements de notre société.\r\nVoici le registre d’un écrivain reconnu, journaliste aiguisé, voyageur avisé, diplomate révélé, gourmand des mots, loin de la goinfrerie des calembours, des caricatures de gare.\r\n\r\nRencontre avec Daniel Rondeau, le samedi 16 décembre, à 15h30, à la Librairie Kléber.','Librairie Kléber, salle Blanche','1 rue des Francs-Bourgeois','67000','à 15h30','03.88.15.78.90',51),(290,121,7,'Rencontres, conférences','Présentation de l\'Alsace en héritage et la Neustadt','Deux livres majeurs pour les fêtes de Noël. Retrouvons-nous pour une conférence illustrée en images avec Etienne Martin pour L’Alsace en Héritage et Hervé Doucet pour La Neustadt de Strasbourg.','Rencontre avec Etienne Martin, Hervé Doucet, Marie Pottecher et Olivier Haegel, le samedi 16 décembre, à 14h, à la Librairie Kléber.','Librairie Kléber, salle Blanche','1 rue des Francs-Bourgeois','67000','à 14h','03.88.15.78.90',57),(291,121,7,'Rencontres, conférences','A. Ledig & F. Pillot dédicacent Le petit arbre !',NULL,'Le premier album jeunesse de Agnès Ledig est un dialogue léger et optimiste qui donne à chacun envie de trouver sa place. Cet allègre poème en alexandrins est une invitation à jouir de ce que l’on est.\r\nDédicace de Agnès Ledig et Frédéric Pillot, le samedi 16 décembre, à 15h, à la Librairie Kléber.','Librairie Kléber, salle Blanche','1 rue des Francs-Bourgeois','67000','à 15h','03.88.15.78.90',33),(292,143,8,'Spectacles, théâtre, contes','Flânerie théâtrealisée autour de la magie de Noël','Les apprentis lutins font leur apprentissage pour pouvoir accompagner le père Noël dans sa tournée \r\nIls vont découvrir avec Lucius, le légionnaire, Eléonore la joueuse de fifre et Gaston le colporteur d\'images ,les contes et  légendes de Noël d\'Alsace et d\'ailleurs .',NULL,'place de la Mairie','place de la Mairie','67240','à 14h30','03.88.63.54.30',175),(293,121,7,'Spectacles, théâtre, contes','Lecture performée par l\'Association Arsène','Tarif : entrée du musée.','L’Association Arsène vient présenter sa pièce. Il peint si bien la vieille tante à verrues que chacun l’a vite reconnue, jouée au TAPS les mercredi 13 et vendredi 15 décembre à 20h30 et les jeudi 14 et samedi 16 à 19h.\r\nTarif réduit à l’entrée du musée sur présentation du billet pour le spectacle au TAPS\r\nTarif réduit au TAPS sur présentation du pass expo Labo','Musée d\'art moderne et contemporain','1 place Hans-Jean Arp','67000','à 15h30','03.68.98.51.55',112),(294,124,7,'Spectacles, théâtre, contes','En attendant Noël','Les bibliothécaires invitent les enfants à\r\npartager un moment chaleureux en\r\ncompagnie du père Noël, de ses lutins et d’un\r\nbonhomme de neige...Pour les 3-6 ans. Sur inscription.',NULL,'À la médiathèque de la Vieille-Ile','24 rue du Maire-André-Traband','67500','de 10h30 à 11h','03.88.90.68.10',161),(295,137,7,'Spectacles, théâtre, contes','«Non mais t\'as vu ma tête !» - Cie Lucamoros','Dès 7 ans.','C’est l’histoire d’un peintre qui entreprend son autoportrait en public et à\r\nqui tout va, peu à peu, échapper, jusqu’à sa propre image qui va se mettre à vieillir, au risque de mettre en danger son propriétaire.\r\nEt ce n’est pas en se vengeant sur son public que les choses vont s’arranger pour lui.','Le Brassin','38 rue de Vendenheim','67300','à 17h','03.88.83.84.85',192),(296,155,7,'Spectacles, théâtre, contes','«Une lune entre deux maisons»','Tout public dès deux ans.\r\nPar la compagnie Les yeux comme des hublots.\r\nAdaptée du texte de Suzanne Lebeau «Une lune entre deux maisons» se décline dans un univers imagé et inspiré des oeuvres de Paul Klee.\r\n  \r\nAteliers parents-enfants (45 min) : samedi 9 décembre. 10h-10h45, 11h15-12h.','Plume est joyeux, bavard, extraverti autant que Taciturne ne parle pas et va difficilement vers les autres, restant seul à jouer de la musique.\r\n\r\nPlume cherche un ami et tente de se rapprocher de Taciturne, qui habite la maison à côté de la sienne. Il lui offre d’abord un ballon, puis le soleil qu’il garde précieusement chez lui.\r\n\r\nTaciturne, touché par ce geste veut lui offrir son chien Ratapoil, mais Plume a peur des chiens.\r\n\r\nLa nuit arrive et avec elle la lune entre leurs deux maisons. Mais aussi des bruits inquiétants, battements d’ailes et tonnerre.\r\n\r\nPlume et Taciturne s’interrogent : est-ce un loup ? Un ours ? Un orage ?\r\n\r\nLeurs peurs communes les rapprochent : ils découvrent qu’à deux, les peurs sont moins terribles et la musique plus belle.','Maison des Arts','8 rue du Château','67380','à 16h','03.88.78.88.82',106),(297,121,7,'Sports, sports de loisirs','Yoga Ô Mandala',NULL,'Venez pratiquer du Yoga Ô Mandala !\r\nNotre ambition créer du lien et développer un collectif ouvert autour de la pratique du yoga.\r\nNotre vocation découvrir, essaimer et répandre la pratique du yoga avec des approches créatives et innovantes.\r\nNos valeurs communes liberté, créativité et solidarité !!!\r\nRetrouvez nous toute l\'année au Mandala :\r\n- les lundis entre 18 et 19h avec Marion.\r\n- les mardis entre 17h15 et 18h15 avec Marie.\r\n- les samedis entre 12h15 et 13h15 avec Pierre','restaurant le Mandala','14 rue du Faubourg-de-Saverne','67000','à 12h15','03.88.10.18.18',48),(298,121,7,'Sports, sports de loisirs','Entraînements Folkloriques Portugais',NULL,'Avec près de 35 ans d\'existence le groupe folklorique portugais «Estrela Dourada» ouvre ses portes et vous proposent de participer aux entraînements, et de découvrir l’ambiance et la richesse de la culture portugaise.\r\nNous sommes à la recherche principalement des danseurs hommes, mais ouvre ses portes à tous types de bénévoles et à tous les motivés.\r\nNous sommes aussi à la recherche de musiciens, chanteurs...\r\n\r\nLe groupe est constitué d\'environ 30 éléments (dont 15 danseuses, 7 danseurs,et 7 musiciens) et réalise des prestations dans toute l\'Alsace et à travers le pays.','église Saint Urbain','28 rue de Lièpvre','67000','de 16h à 18h','06.63.31.70.41',195),(299,156,7,'Stages, ateliers vacances scolaires','Complètement givré !','Venez décorer un photophore et une boule de Noël en famille. Après la découverte de l’exposition Happy Cristal, vous pourrez vous initier à la technique du satinage, chère à Lalique !',NULL,'Musée Lalique','40 rue du Hochberg','67290','à 14h','03.88.89.08.14',7),(300,124,7,'Stages, ateliers vacances scolaires','Découverte des services en ligne de la médiathèque','Vous souhaitez rechercher des documents\r\ndans le catalogue de la médiathèque, les réserver,\r\nprolonger les documents empruntés\r\nou encore consulter des magazines en ligne\r\nsur Le Kiosk et vous former sur Vodeclic ?','Découvrez le site Internet de la médiathèque\r\net ses nombreuses fonctionnalités lors d’un\r\natelier pratique !\r\n\r\nPublic : Jeunes et adultes / Accès : Sur inscription','à la médiathèque de la Vieille-Ile','24 rue du Maire-André-Traband','67500','de 10h à 11h30','03.88.90.68.10',175),(301,145,7,'Stages, ateliers vacances scolaires','Animation autour du potier','Le potier, Michel Streissel se fera un plaisir de vous dévoiler les secrets du monde de la poterie. Vous pourrez assister à une démonstrations de tournage et partager vin chaud et bredele dans l\'atelier.',NULL,'Poterie Streissel','25 rue de Haguenau','67620','de 14h30 à 20h','03.88.86.64.69',143),(302,121,7,'Stages, ateliers vacances scolaires','Dégustations et amour des produits gourmands',NULL,'Partager notre amour pour les bons produits autour d’une dégustation exclusive. Thés, Chocolats, Foies gras livreront tous leurs secrets. \r\nChaque samedi, un nouveau produit mis à l\'honneur par Isabelle Di Costanzo et son équipe !','Maison Artzner','7 rue de la mésange 67000 STRASBOURG','67000','de 10h à midi','03.88.32.05.00',126),(303,121,7,'Stages, ateliers vacances scolaires','Cours danse solo - Dansez sans partenaire !',NULL,'Les danses «solo» se pratiquent en groupe et sans obligation de partenaire, débutant.\r\n\r\nUn tour du monde de la danse : valses, rock, salsa, west coast swing, madison, quickstep, chacha.','Salle St-Urbain, sous l\'église','55-57 avenue Jean-Jaurès','67000','à 09h30','06.82.59.21.73',193),(304,121,7,'Stages, ateliers vacances scolaires','Atelier de danse autour du spectacle «Rain»','Atelier tout public avec Clinton Stringer, danseur de la compagnie Rosas // http://www.Maillon.Eu/plusplus/174/atelier-de-danse-avec-clinton-stringer','Un atelier dans lequel chacun pourra découvrir les principes du travail d’Anne Teresa De Keersmaeker. Après un échauffement rapide, les participants apprendront un alphabet dansé basé sur des mouvements simples comme marcher et courir, ce qui leur permettra ensuite de créer leur propre version de la séquence du début du spectacle.\r\nPlus d\'infos sur le spectacle : http://www.Maillon.Eu/spectacle/229/rain // Assister aux spectacles est un préalable pour pouvoir participer aux ateliers.','Centre chorégraphique de Strasbourg','10 rue de Phalsbourg','67000','de 10h à midi','03.88.27.61.81',143);
+/*!40000 ALTER TABLE `event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event_etre`
+--
+
+DROP TABLE IF EXISTS `event_etre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_etre` (
+  `event_id` int(11) NOT NULL,
+  `etre_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_id`,`etre_id`),
+  KEY `IDX_415EDAA971F7E88B` (`event_id`),
+  KEY `IDX_415EDAA9C2BB5B57` (`etre_id`),
+  CONSTRAINT `FK_415EDAA971F7E88B` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_415EDAA9C2BB5B57` FOREIGN KEY (`etre_id`) REFERENCES `etre` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_etre`
+--
+
+LOCK TABLES `event_etre` WRITE;
+/*!40000 ALTER TABLE `event_etre` DISABLE KEYS */;
+INSERT INTO `event_etre` VALUES (229,39),(229,47),(230,37),(230,39),(230,41),(231,37),(231,39),(232,37),(232,39),(233,39),(233,41),(234,37),(234,39),(235,37),(235,39),(236,39),(236,47),(237,37),(237,39),(238,37),(238,39),(239,37),(239,39),(240,38),(240,43),(240,48),(241,37),(241,39),(242,37),(242,39),(244,37),(244,39),(245,37),(245,39),(246,37),(246,39),(247,37),(247,39),(248,37),(248,39),(248,40),(248,41),(248,43),(249,37),(249,39),(249,43),(250,43),(250,48),(252,39),(253,37),(253,39),(254,37),(254,38),(254,39),(254,41),(255,37),(255,39),(256,39),(256,43),(257,37),(257,39),(258,37),(258,39),(259,37),(259,39),(260,41),(260,42),(261,41),(261,42),(262,41),(262,42),(263,41),(264,37),(264,41),(264,43),(265,41),(265,43),(265,44),(266,41),(266,44),(267,37),(267,40),(268,41),(269,37),(269,40),(269,41),(270,37),(270,39),(270,41),(271,40),(271,41),(272,40),(272,41),(273,37),(273,39),(273,40),(273,41),(273,43),(273,48),(274,37),(274,40),(274,41),(275,41),(275,43),(276,40),(276,41),(277,37),(277,41),(278,41),(278,42),(279,41),(279,42),(280,42),(281,37),(281,39),(281,41),(281,42),(282,37),(282,38),(282,40),(282,41),(283,37),(283,39),(283,41),(284,41),(284,42),(285,41),(285,42),(286,37),(286,38),(286,39),(286,41),(286,42),(287,41),(287,42),(288,41),(288,42),(289,41),(289,42),(290,41),(290,42),(291,37),(291,41),(291,42),(292,37),(292,39),(292,41),(293,37),(293,39),(293,41),(293,42),(294,37),(294,39),(295,37),(295,39),(295,41),(296,37),(296,39),(297,38),(297,40),(297,46),(297,48),(298,38),(298,41),(298,47),(298,48),(299,38),(299,41),(299,42),(299,48),(300,41),(300,42),(301,41),(301,42),(302,40),(302,41),(303,38),(303,47),(304,47);
+/*!40000 ALTER TABLE `event_etre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ville`
+--
+
+DROP TABLE IF EXISTS `ville`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ville` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_43C3D9C36C6E55B5` (`nom`)
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ville`
+--
+
+LOCK TABLES `ville` WRITE;
+/*!40000 ALTER TABLE `ville` DISABLE KEYS */;
+INSERT INTO `ville` VALUES (128,'Achenheim'),(146,'Baldenheim'),(149,'Barr'),(143,'Bischwiller'),(122,'Breitenbach'),(134,'Dalhunden'),(151,'Dossenheim-sur-Zinsel'),(123,'Durrenbach'),(127,'Ernolsheim-Bruche'),(129,'Froeschwiller'),(150,'Grendelbruch'),(124,'Haguenau'),(141,'Hochfelden'),(139,'Ingwiller'),(135,'Innenheim'),(138,'Keskastel'),(132,'La Wantzenau'),(120,'Lauterbourg'),(154,'Lembach'),(155,'Lingolsheim'),(152,'Marmoutier'),(148,'Molsheim'),(118,'Mundolsheim'),(147,'Niederbronn-les-Bains'),(153,'Niedernai'),(125,'Oberhoffen-sur-Moder'),(136,'Ostwald'),(126,'Plobsheim'),(142,'Reichshoffen'),(131,'Rosheim'),(144,'Saint-Nabor'),(133,'Saverne'),(137,'Schiltigheim'),(130,'Souffelweyersheim'),(145,'Soufflenheim'),(119,'Soultz-sous-Forêts'),(121,'Strasbourg'),(140,'Val de Moder'),(156,'Wingen-sur-Moder');
+/*!40000 ALTER TABLE `ville` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-12-14 17:31:48

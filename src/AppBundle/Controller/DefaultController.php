@@ -21,12 +21,28 @@ class DefaultController extends Controller
 
         if ($form->isSubmitted()) {
             if ($request->getMethod() == 'POST') {
-                $data = $form->getData();
-                if ($data) {
-                    $ville_id=$data->getId();
-                    $etre_id=$data->getId();
-                    $espace_id=$data->getId();
+                $data_ville = $form["ville"]->getData();
+                if ($data_ville) {
+                    $ville_id=$data_ville->getId();
+                }
+                else {
+                    $ville_id=null;
+                }
+                
+                $data_etre = $form["etre"]->getData();
+                if ($data_etre) {
+                    $etre_id=$data_etre->getId();
+                }
+                else {
+                    $etre_id=null;
+                }
 
+                $data_espace = $form["espace"]->getData();
+                if ($data_espace) {
+                    $espace_id=$data_espace->getId();
+                }
+                else {
+                    $espace_id=null;
                 }
                 // $etre_id = $form["etre"]->getData()->getId();
                 // $espace_id = $form["espace"]->getData()->getId();

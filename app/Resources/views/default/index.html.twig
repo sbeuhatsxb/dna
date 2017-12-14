@@ -1,59 +1,85 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="logo">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <img src="https://www.sedeshabitat.fr/wp-content/uploads/2017/09/LOGO_DNA.jpg">
-        </div>
-    </div>
-    <div class="baseline">
-        <h1>Soyez la sortie que vous souhaitez être</h1>
-    </div>
-    <div class=intro>
-        <p>Le principe est simple.</p>
-    </div>
-    <div class="reglement">
-        <p>Trois règles à suivre :</p>
-    </div>
-    <h2>Règle n°1</h2>
-    <p>Choisissez votre </br>humeur</p>
-    <h2>Règle n°2</h2>
-    <p>Choisissez votre environnement</p>
-    <h2>Règle n°3</h2>
-    <p>Choisissez votre </br>lieu</p>
+    <div class="banniere">
+        <img src="{{ asset('images/banniere.png') }}" alt="homme_noir" />
 
-    <h2>Êtes-vous prêt ?</h2>
+    </div>
+    <div class="container-fluid">
 
-    <div class="form">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
+
+        <h1> <span> Le principe est simple</span></h1>
+        <h2>Trois règles à suivre :</h2>
+
+            <div class="row">
+                <div class="col-xs-4 text-center">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 class="text-center">Règle n°1</h3>
+                            <p class="text-center">Choisissez votre<br> humeur</p>
+                            <img src="{{ asset('images/humeur.jpg') }}" class="img-circle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 class="text-center">Règle n°2</h3>
+                            <p class="text-center">Choisissez votre<br> environnement</p>
+                            <img src="{{ asset('images/inout.jpg') }}" class="img-circle">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 class="text-center">Règle n°3</h3>
+                            <p class="text-center">Choisissez votre<br> lieu</p>
+                            <img src="{{ asset('images/ville.jpg') }}" class="img-circle">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class=intro>
+
+
+            <h2>Il ne reste plus qu'à faire votre choix !!!</h2>
+
+
+        <div class="form">
+        <div class="row formulaire">
+            <div class="col-xs-12 text-justify">
+
                 {{ form_start(form) }}
-                <div class="form-group-etre">
-                    {{ form_label(form.etre) }}
-                    {{ form_widget(form.etre) }}
-                    {{ form_errors(form.etre) }}
-                </div>
-                <div class="form-group-espace">
-                    {{ form_label(form.espace) }}
-                    </br>
-                    {{ form_widget(form.espace) }}
-                    {{ form_errors(form.espace) }}
-                </div>
-                <div class="form-group-ville">
-                    {{ form_label(form.ville) }}
-                    </br>
-                    {{ form_widget(form.ville) }}
-                    {{ form_errors(form.ville) }}
-                </div>
-                <div class="form-group-save">
-                    {{ form_label(form.save) }}
-                    </br>
-                    {{ form_widget(form.save) }}
-                </div>
+                <p>je veux être {{ form_widget(form.etre) }}{{ form_errors(form.etre) }} en étant {{ form_widget(form.espace) }} {{ form_errors(form.espace) }} à {{ form_widget(form.ville) }} {{ form_errors(form.ville) }} </p>
+
+                {#<div class="form-group-etre">#}
+                    {#{{ form_label(form.etre) }}#}
+                    {#{{ form_widget(form.etre) }}#}
+                    {#{{ form_errors(form.etre) }}#}
+                {#</div>#}
+                {#<div class="form-group-espace">#}
+                    {#{{ form_label(form.espace) }}#}
+                    {#</br>#}
+                    {#{{ form_widget(form.espace) }}#}
+                    {#{{ form_errors(form.espace) }}#}
+                {#</div>#}
+                {#<div class="form-group-ville">#}
+                    {#{{ form_label(form.ville) }}#}
+                    {#</br>#}
+                    {#{{ form_widget(form.ville) }}#}
+                    {#{{ form_errors(form.ville) }}#}
+                {#</div>#}
+                {#<div class="form-group-save">#}
+                    {#{{ form_label(form.save) }}#}
+                    {#</br>#}
+                    {#{{ form_widget(form.save) }}#}
+                {#</div>#}
             </div>
         </div>
     </div>
-
+    </div>
 
 
 

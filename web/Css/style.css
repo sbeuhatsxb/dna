@@ -6,47 +6,68 @@ img {
     margin-top: -20px;
 }
 
-.col-md-12.col-sm-12.col-xs-12 {
-    background-color: #e1003a;
+
+
+
+.thumbnail{
+    max-width: 350px;
+    max-height: 400px;
+    margin: auto;
 }
 
+
+.img-circle {
+    max-width: 200px;
+    max-height: 200px;
+    align-content: center;
+}
+.banniere
+{
+   background-image: url("../images/banniere.png");
+}
 .baseline {
     justify-content: center;
     text-align: center;
-    background-color: #e1003a;
     padding-bottom: 50px;
 }
 
+
+
 h2, .h2 {
     font-size: 30px;
-    font-family: Faster One;
-    background-color: #e1003a;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    font-family: Sriracha;
+    margin-top: 3%;
     padding: 10px;
     text-align: center;
 }
 
 h1, .h1 {
     font-size: 30px;
-    font-family: Faster One;
+    font-family: Sriracha;
+    text-align: center;
+    margin-top: 5%;
+}
+
+h3, .h3 {
+    font-size: 30px;
+    font-family: Sriracha;
+    text-align: center;
+    margin-top: 5%;
 }
 
 p {
-    font-family: Questrial;
+    font-family: Bitter;
     font-size: 1.3em;
     text-align: center;
-    background-color: #fff;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 5px;
-    height: 100px;
+
 }
+
+
 
 .required {
     font-family: Questrial;
     font-size: 1.5em;
-    color: #fff;
+    color: black;
 }
 
 .intro {
@@ -59,7 +80,7 @@ p {
 
 .form {
     padding: 30px;
-    background-color: #e1003a;
+
 }
 
 .form-group-etre {
@@ -94,4 +115,48 @@ p {
 
 *::selection {
     background-color: #fff;
+}
+
+
+
+h1{
+    text-align:center;
+    background:linear-gradient(
+    #fff 0%,
+    #fff 45%,
+    #FA0000 46%,
+    #FA0000 54%,
+    #fff 54%,
+    #fff 100%);
+    background:-webkit-linear-gradient(
+            #fff 0%,
+            #fff 45%,
+            #FA0000 46%,
+            #FA0000 54%,
+            #fff 54%,
+            #fff 100%);
+    background:    -moz-linear-gradient(
+            #fff 0%,
+            #fff 45%,
+            #FA0000 46%,
+            #FA0000 54%,
+            #fff 54%,
+            #fff 100%);
+    background:     -ms-linear-gradient(
+            #fff 0%,
+            #fff 45%,
+            #FA0000 46%,
+            #FA0000 54%,
+            #fff 54%,
+            #fff 100%);
+    background:      -o-linear-gradient(
+            #fff 0%,
+            #fff 45%,
+            #FA0000 46%,
+            #FA0000 54%,
+            #fff 54%,
+            #fff 100%);
+}
+h1 span{
+    background:#fff;padding:0 20px;
 }

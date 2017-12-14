@@ -27,17 +27,17 @@ class FormType extends AbstractType
     //     ))
 
                 ->add('etre', EntityType::class, array (
-                          'label'=>'Je veux être',
+
                           'mapped'=>false,
                           'class'=>'AppBundle\Entity\Etre',
                      ))
                 ->add('espace', EntityType::class, array (
-                           'label'=>'en étant',
+
                            'mapped'=>false,
                            'class'=>'AppBundle\Entity\Espace',
                     ))
                 ->add('ville', EntityType::class, array (
-                     'label'=>'à',
+
                      'mapped'=>false,
                      'class'=>'AppBundle\Entity\Ville',
                 ))

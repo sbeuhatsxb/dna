@@ -20,9 +20,9 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
                         ->setParameter('ville', $ville_id);
         }
         if ($etre_id) {
-                        $qb->leftJoin('e.etre', 'et')
-                        ->where('et.id=  :etre')
-                        ->setParameter('etre', $etre_id);
+                        $qb->leftJoin('e.etres', 'et')
+                        ->where('et.id=  :etres')
+                        ->setParameter('etres', $etre_id);
         }
         if ($espace_id) {
                         $qb->leftJoin('e.espace', 'es')

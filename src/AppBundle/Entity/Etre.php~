@@ -28,6 +28,12 @@ class Etre
      */
     private $label;
 
+    /**
+    *@ORM\ManyToMany(targetEntity="AppBundle\Entity\Event")
+    *@ORM\JoinColumn(nullable=true)
+    */
+    private $events;
+
     public function __toString ()
     {
         return $this->label;

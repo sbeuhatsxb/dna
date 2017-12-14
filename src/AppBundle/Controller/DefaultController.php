@@ -30,7 +30,7 @@ class DefaultController extends Controller
                 else {
                     $ville_id=null;
                 }
-                
+
                 $data_etre = $form["etre"]->getData();
                 if ($data_etre) {
                     $etre_id=$data_etre->getId();
@@ -58,11 +58,32 @@ class DefaultController extends Controller
                 // $events= $ville->getEvents();
                 // var_dump(count($events));
                 // $events = $em->getRepository('AppBundle:Event')->rechercheEspace($espace);
+
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
                 ));    }
 
         }
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Event');
+        foreach ($events as $event) {
+
+            if ($request->request->get('event'.$event->getID()))
+            {
+                $nbParticipants=$event->getNbParticipants();
+                var_dump($nbParticipants);
+                $nbParticipants++;
+                $event->setNbParticipants($nbParticipants);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($event);
+                $em->flush();
+            }
+        }
+
+        $this->addFlash(
+             'notice',
+             "Merci pour votre réservation. La liste du matériel demandée est celle figurant ci-dessous. Nous vous confirmerons votre demande sous 3 jours ouvrés. Avec nos meilleurs salutations. L'équipe de la Bidouillothèque by Alsace Digitale."
+         );
 
         return $this->render('default/index.html.twig', array(
             'form' => $form->createView(),

@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use AppBundle\Entity\Event; 
 
 
 class DefaultController extends Controller
@@ -77,6 +78,15 @@ class DefaultController extends Controller
             'form' => $form->createView(),
         ));
     }
-
+        /**
+         * @Route("/monresultat/{id}", name="monresultat")
+         * @Method("GET")
+         */
+        public function resultatAction(Event $event)
+        {
+            return $this->render('default/resultats2.html.twig', array(
+                'event' => $event
+            ));
+      }
 
 }

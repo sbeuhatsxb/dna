@@ -19,12 +19,12 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
                         ->where('v.id=  :ville')
                         ->setParameter('ville', $ville_id);
         }
-        if ($etre_id) {
+        elseif ($etre_id) {
                         $qb->leftJoin('e.etres', 'et')
                         ->where('et.id=  :etres')
                         ->setParameter('etres', $etre_id);
         }
-        if ($espace_id) {
+        elseif ($espace_id) {
                         $qb->leftJoin('e.espace', 'es')
                         ->where('es.id=  :espace')
                         ->setParameter('espace', $espace_id);

@@ -57,6 +57,7 @@ class AppFixtures extends Fixture
                         $event->setHoraire((string)$coulage->Ref_datepremiereoccurence->dateRef->Horaires);
                         $event->setTelephone((string)$meta->Contacts->Contact->Telephone);
                         $event->setNbParticipants(rand(0,1500));
+                        $manager->persist($event);
 
 
                         if(!in_array(((string)$coulage->Ville), $villes))

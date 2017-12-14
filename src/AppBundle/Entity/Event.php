@@ -73,12 +73,11 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
      */
     private $ville;
 
     /**
-     * @var \DateTime
      *
      * @ORM\Column(name="horaire", type="string", length=255)
      */

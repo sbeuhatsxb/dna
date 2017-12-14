@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use AppBundle\Entity\Event; 
+use AppBundle\Entity\Event;
 
 
 class DefaultController extends Controller
@@ -50,24 +50,26 @@ class DefaultController extends Controller
                 $events = $em->getRepository('AppBundle:Event')->recherche($ville_id, $etre_id, $espace_id);
 
 
-                // foreach ($events as $event) {
-                //     var_dump($events);
-                //     if ($request->request->get('event'.$event->getID()))
-                //     {
-                //         $nbParticipants = $_POST['event'.$event->getNbParticipants()];
-                //
-                //         // $nbParticipants=$event->getNbParticipants();
-                //         var_dump($nbParticipants);
-                //         $nbParticipants++;
-                //         var_dump($nbParticipants);
-                //         $event->setNbParticipants($nbParticipants);
-                //         $em->persist($event);
-                //         $em->flush();
-                //         return $this->render('default/resultats.html.twig', array(
-                //             'events'=>$events,
-                //         ));    }
-                //
-                // }
+
+                        // $nbParticipants = $_POST['event'.$event->getNbParticipants()];
+                        if (isset($_GET["participer"]))
+                        {
+                            $em = $this->getDoctrine()->getManager();
+                            $event = $em->getRepository('AppBundle:Event')->findId();
+                            var_dump($event);
+                        $nbParticipants=$event->getNbParticipants();
+                        var_dump($nbParticipants);
+                        $nbParticipants++;
+                        var_dump($nbParticipants);
+                        $event->setNbParticipants($nbParticipants);
+                        $em->persist($event);
+                        $em->flush();
+                        return $this->render('default/resultats2.html.twig', array(
+                            'events'=>$events,
+                        ));
+                        }
+
+
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
                 ));    }

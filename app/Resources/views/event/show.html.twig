@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Event</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ event.id }}</td>
+            </tr>
+            <tr>
+                <th>Theme</th>
+                <td>{{ event.theme }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ event.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ event.description }}</td>
+            </tr>
+            <tr>
+                <th>Descriptioncomplementaire</th>
+                <td>{{ event.descriptionComplementaire }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ event.lieu }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ event.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Cp</th>
+                <td>{{ event.cp }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ event.ville }}</td>
+            </tr>
+            <tr>
+                <th>Horaire</th>
+                <td>{{ event.horaire }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ event.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Nbparticipants</th>
+                <td>{{ event.nbParticipants }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('event_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('event_edit', { 'id': event.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

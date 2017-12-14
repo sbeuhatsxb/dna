@@ -22,21 +22,25 @@ class DefaultController extends Controller
         if ($form->isSubmitted()) {
             if ($request->getMethod() == 'POST') {
                 $data = $form->getData();
-                // var_dump($data);
+                if ($data) {
+                    $ville_id=$data->getId();
+                    $etre_id=$data->getId();
+                    $espace_id=$data->getId();
+
+                }
                 // $etre_id = $form["etre"]->getData()->getId();
                 // $espace_id = $form["espace"]->getData()->getId();
-                $ville_id=$form["ville"]->getData()->getId();
+                // var_dump($espace_id);
 
-                $em = $this->getDoctrine()->getManager();
                 // $ville = $em->getRepository('AppBundle:Ville')->find($ville_id);
                 // $etre = $em->getRepository('AppBundle:Etre')->find($etre_id);
                 // $espace = $em->getRepository('AppBundle:Espace')->find($espace_id);
-
+                $em = $this->getDoctrine()->getManager();
+                $events = $em->getRepository('AppBundle:Event')->recherche($ville_id, $etre_id, $espace_id);
                 // $events= $ville->getEvents();
                 // var_dump(count($events));
-                $events = $em->getRepository('AppBundle:Event')->recherche($ville_id);
                 // $events = $em->getRepository('AppBundle:Event')->rechercheEspace($espace);
-                return $this->render('default/resultats2.html.twig', array(
+                return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
                 ));    }
 

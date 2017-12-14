@@ -11,25 +11,33 @@ use AppBundle\Entity\Event;
  */
 class EventRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function recherche($ville_id)
+    public function recherche($ville_id, $etre_id, $espace_id)
     {
-        if (isset($ville_id)) {
-        $query=$this->createQueryBuilder('e')
-                        ->leftJoin('e.ville', 'v')
+        $qb=$this->createQueryBuilder('e');
+        if ($ville_id) {
+                        $qb->leftJoin('e.ville', 'v')
                         ->where('v.id=  :ville')
-                        ->setParameter('ville', $ville_id)
+                        ->setParameter('ville', $ville_id);
+        }
+        if ($etre_id) {
+                        $qb->leftJoin('e.etre', 'et')
+                        ->where('et.id=  :etre')
+                        ->setParameter('etre', $etre_id);
+        }
+        if ($espace_id) {
+                        $qb->leftJoin('e.espace', 'es')
+                        ->where('es.id=  :espace')
+                        ->setParameter('espace', $espace_id);
+        }
                         // ->andWhere('e.etres=  :etre')
                         // ->setParameter('etre', $etre->getId())
                         // ->andWhere('e.espace=  :espace')
                         // ->setParameter('espace', $espace->getId())
-                        ->getQuery();
         // $query=$this->_em->createQuery('SELECT e,v from AppBundle:Event e JOIN e.ville v WHERE v.id=:id_ville')
         //                     ->setParameter('id_ville', $ville_id);
-        return $query->getResult();
-    }
+        return $qb->getQuery()->getResult();
 
-
-    }
+}
 
 }
 // $repository = $this->getDoctrine()->getRepository('AppBundle:Material');

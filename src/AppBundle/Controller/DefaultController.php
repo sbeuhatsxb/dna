@@ -48,36 +48,15 @@ class DefaultController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $events = $em->getRepository('AppBundle:Event')->recherche($ville_id, $etre_id, $espace_id);
 
-                return $this->render('default/resultats.html.twig', array(
-                    'events'=>$events,
-                ));    }
         }
-
-        // var_dump($nbParticipants);
-        //
-        // $em = $this->getDoctrine()->getManager();
-        // $events = $em->getRepository('AppBundle:Event');
-        // var_dump($events);
-        // foreach ($events as $event) {
-        //     var_dump($nbParticipants);
-        //
-        //     if ($request->request->get('event'.$event->getID()))
-        //     {
-        //         $nbParticipants=$event->getNbParticipants();
-        //         var_dump($nbParticipants);
-        //         $nbParticipants++;
-        //         var_dump($nbParticipants);
-        //         $event->setNbParticipants($nbParticipants);
-        //         $em->persist($event);
-        //         $em->flush();
-        //     }
-        // }
 
 
         return $this->render('default/index.html.twig', array(
             'form' => $form->createView(),
         ));
+
     }
 
 
+}
 }

@@ -38,14 +38,14 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descriptionComplementaire", type="text")
+     * @ORM\Column(name="descriptionComplementaire", type="text", nullable=true)
      */
     private $descriptionComplementaire;
 
@@ -71,10 +71,9 @@ class Event
     private $cp;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
-     */
+    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Ville", inversedBy="ville")
+    *@ORM\JoinColumn(nullable=true)
+    */
     private $ville;
 
     /**
@@ -108,6 +107,8 @@ class Event
     *@ORM\JoinColumn(nullable=false)
     */
     private $espace;
+
+
 
     public function __toString()
     {

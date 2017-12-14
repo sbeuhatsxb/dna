@@ -100,7 +100,7 @@ class DefaultController extends Controller
                       }
                 }
 
-           return $this->render('default/resultats2.html.twig', array(
+           return $this->render('default/resultats3.html.twig', array(
                'event' => $event
            ));
         }

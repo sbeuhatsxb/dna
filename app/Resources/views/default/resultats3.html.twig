@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="banniere">
+        <img src="{{ asset('images/banniere.png') }}" alt="homme_noir" />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <p>{{ event.titre }}</p>
+                <p>{{ event.description }}</p>
+                <p>{{ event.descriptionComplementaire }}</p>
+            </div>
+            <div class="col-xs-6">
+                <p>{{ event.lieu }}</p>
+                <p>{{ event.adresse }}</p>
+                <p>{{ event.ville }}</p>
+                <p>{{ event.cp }}</p>
+            </div>
+        </div>
+    </div>
+
+{{ event.nbParticipants }}
+    
+{% endblock %}

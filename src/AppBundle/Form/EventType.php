@@ -15,7 +15,7 @@ class EventType extends AbstractType
     {
         $builder->add('theme')->add('titre')->add('description')->add('descriptionComplementaire')->add('lieu')->add('adresse')->add('cp')->add('ville')->add('horaire')->add('telephone')->add('nbParticipants')
         ->add('espace')
-        // ->add('etres')
+        ->add('etres')
         ;
     }
 

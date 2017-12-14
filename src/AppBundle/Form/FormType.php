@@ -43,9 +43,7 @@ class FormType extends AbstractType
                 ))
                 ->add('save', SubmitType::class, array(
                     'label' => "Go !",
-                    'attr' => array(
-                        'class' => 'btn btn-info'),
-));
+                ));
       }
 
     /**

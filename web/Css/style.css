@@ -1,12 +1,97 @@
+img {
+    width: 100%;
+}
+
+.logo {
+    margin-top: -20px;
+}
+
+.col-md-12.col-sm-12.col-xs-12 {
+    background-color: #e1003a;
+}
+
+.baseline {
+    justify-content: center;
+    text-align: center;
+    background-color: #e1003a;
+    padding-bottom: 50px;
+}
+
 h2, .h2 {
+    font-size: 30px;
+    font-family: Faster One;
+    background-color: #e1003a;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 10px;
+    text-align: center;
+}
+
+h1, .h1 {
     font-size: 30px;
     font-family: Faster One;
 }
 
 p {
     font-family: Questrial;
+    font-size: 1.3em;
+    text-align: center;
+    background-color: #fff;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 5px;
+    height: 100px;
 }
 
 .required {
     font-family: Questrial;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.intro {
+    height: 50px;
+}
+
+.reglement {
+    height: 50px;
+}
+
+.form {
+    padding: 30px;
+    background-color: #e1003a;
+}
+
+.form-group-etre {
+    text-align: center;
+}
+
+.form-group-espace {
+    text-align: center;
+}
+
+.form-group-ville {
+    text-align: center;
+}
+
+.form-group-save {
+    text-align: center;
+    font-family: Faster One;
+    font-size: 2em;
+}
+
+#appbundle_etre_etre {
+    font-family: Faster One;
+}
+
+#appbundle_etre_espace {
+    font-family: Faster One;
+}
+
+#appbundle_etre_vile {
+    font-family: Faster One;
+}
+
+*::selection {
+    background-color: #fff;
 }

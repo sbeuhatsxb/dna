@@ -1,34 +1,60 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div class="logo">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <img src="https://www.sedeshabitat.fr/wp-content/uploads/2017/09/LOGO_DNA.jpg">
+        </div>
+    </div>
+    <div class="baseline">
+        <h1>Soyez la sortie que vous souhaitez être</h1>
+    </div>
+    <div class=intro>
+        <p>Le principe est simple.</p>
+    </div>
+    <div class="reglement">
+        <p>Trois règles à suivre :</p>
+    </div>
+    <h2>Règle n°1</h2>
+    <p>Choisissez votre </br>humeur</p>
+    <h2>Règle n°2</h2>
+    <p>Choisissez votre environnement</p>
+    <h2>Règle n°3</h2>
+    <p>Choisissez votre </br>lieu</p>
 
-<p>Le principe est simple.<p>
-<p>Trois règles à suivre :<p>
-<h2>Règle n°1</h2>
-<p>Choisissez votre humeur<p>
-<h2>Règle n°2</h2>
-<p>Choisissez votre environnement<p>
-<h2>Règle n°3</h2>
-<p>Choisissez votre lieu<p>
+    <h2>Êtes-vous prêt ?</h2>
 
-<p>Vous êtes prêt ?<p>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="form">
-            <div class="col-xs-12">
-                {{ form_row(form.etre)}}
-            </div>
-            <div class="col-xs-12">
-                {{ form_row(form.espace)}}
-            </div>
-            <div class="col-xs-12">
-                {{ form_row(form.ville)}}
-            </div>
-            <div class="col-xs-12">
-                {{ form_row(form.save)}}
+    <div class="form">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                {{ form_start(form) }}
+                <div class="form-group-etre">
+                    {{ form_label(form.etre) }}
+                    {{ form_widget(form.etre) }}
+                    {{ form_errors(form.etre) }}
+                </div>
+                <div class="form-group-espace">
+                    {{ form_label(form.espace) }}
+                    </br>
+                    {{ form_widget(form.espace) }}
+                    {{ form_errors(form.espace) }}
+                </div>
+                <div class="form-group-ville">
+                    {{ form_label(form.ville) }}
+                    </br>
+                    {{ form_widget(form.ville) }}
+                    {{ form_errors(form.ville) }}
+                </div>
+                <div class="form-group-save">
+                    {{ form_label(form.save) }}
+                    </br>
+                    {{ form_widget(form.save) }}
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+
+
+
 {% endblock %}

@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use AppBundle\Entity\Event; 
+use AppBundle\Entity\Event;
 
 
 class DefaultController extends Controller
@@ -50,6 +50,7 @@ class DefaultController extends Controller
                 $events = $em->getRepository('AppBundle:Event')->recherche($ville_id, $etre_id, $espace_id);
 
 
+
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
                     'form' => $form->createView(),
@@ -61,6 +62,8 @@ class DefaultController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+
         /**
          * @Route("/monresultat/{id}", name="monresultat")
          * @Method("GET")
@@ -72,6 +75,7 @@ class DefaultController extends Controller
             ));
       }
 
+
       /**
        * @Route("/#home", name="ancre")
        * @Method("GET")
@@ -80,5 +84,35 @@ class DefaultController extends Controller
       {
           return $this->redirect($this->generateUrl('homepage' . '#monAncre'));
       }
+
+
+          /**
+           * @Route("/monresultat/{id}", name="monresultat")
+           * @Method("GET")
+           */
+           public function updateAction(Request $request, Event $event)
+           {
+
+                   $em = $this->getDoctrine()->getManager();
+                   $events = $em->getRepository('AppBundle:Event')->findById($event);
+                // var_dump($event);
+               foreach($events as $event){
+                $nbParticipants = $event->getNbParticipants();
+
+                   if ($request->query->get('participer') == "J'y participe !"){
+                       $nbParticipants++;
+                       var_dump($nbParticipants);
+                       // var_dump($nbParticipants);
+                       $event->setNbParticipants($nbParticipants);
+                       $em->persist($event);
+                       $em->flush();
+                      }
+                }
+
+           return $this->render('default/resultats3.html.twig', array(
+               'event' => $event
+           ));
+        }
+
 
 }

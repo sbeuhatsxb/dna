@@ -112,7 +112,7 @@ class Event
 
     public function __toString()
     {
-        return $this->titre.$this->theme;
+        return $this->titre . " " . $this->theme . " " . $this->description . " " . $this->horaire;
     }
 
     /**

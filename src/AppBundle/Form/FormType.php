@@ -27,10 +27,8 @@ class FormType extends AbstractType
     //     ))
 
                 ->add('etre', EntityType::class, array (
-                          'mapped'=>false,
-                          'required'=>false,
-                          'placeholder' => ' ',
-                          'class'=>'AppBundle\Entity\Etre',
+                    'mapped'=>false,
+                    'class'=>'AppBundle\Entity\Etre',
                      ))
                 ->add('espace', EntityType::class, array (
                            'placeholder' => ' ',

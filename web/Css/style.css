@@ -1,3 +1,7 @@
+body {
+    height: 400px;
+}
+
 img {
     width: 100%;
 }
@@ -14,15 +18,26 @@ img {
     margin-top: 5%;
 }
 
+.btn
+{
+ background-color: #FA0000;
+    color: white;
+}
+
 
 .thumbnail{
     max-width: 350px;
-    max-height: 400px;
+    max-height: 100%;
     margin: auto;
     -webkit-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
     -moz-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
     box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
 
+}
+
+.horaire
+{
+    font-weight: bolder;
 }
 
 
@@ -72,6 +87,9 @@ p {
 
 }
 
+footer {
+    margin-top: 20%;
+}
 
 
 .required {
@@ -92,6 +110,7 @@ p {
     padding: 30px;
 
 }
+
 
 .form-group-etre {
     text-align: center;
@@ -170,3 +189,6 @@ h1{
 h1 span{
     background:#fff;padding:0 20px;
 }
+
+
+#lirelasuite {display:none;}

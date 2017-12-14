@@ -46,20 +46,6 @@ class AppFixtures extends Fixture
                     if($dateEvent[0] === $today || $dateEvent2 === $today2)
                     {
 
-                        $event = New Event();
-                        $event->setTheme((string)$coulage->Categorie);
-                        $event->setTitre((string)$coulage->Titre);
-                        $event->setDescription((string)$coulage->Description);
-                        $event->setDescriptionComplementaire((string)$coulage->DescriptionComplementaire);
-                        $event->setLieu((string)$coulage->Lieu);
-                        $event->setAdresse((string)$coulage->Adresse);
-                        $event->setCp((string)$coulage->CodePostal);
-                        $event->setHoraire((string)$coulage->Ref_datepremiereoccurence->dateRef->Horaires);
-                        $event->setTelephone((string)$meta->Contacts->Contact->Telephone);
-                        $event->setNbParticipants(rand(0,1500));
-                        $manager->persist($event);
-
-
                         if(!in_array(((string)$coulage->Ville), $villes))
                         {
                             $ville = (string)$coulage->Ville;
@@ -68,6 +54,22 @@ class AppFixtures extends Fixture
                             $ville->setNomVille(end($villes));
                             $manager->persist($ville);
                         }
+
+                        $event = New Event();
+                        $event->setTheme((string)$coulage->Categorie);
+                        $event->setTitre((string)$coulage->Titre);
+                        $event->setDescription((string)$coulage->Description);
+                        $event->setDescriptionComplementaire((string)$coulage->DescriptionComplementaire);
+                        $event->setLieu((string)$coulage->Lieu);
+                        $event->setVille($ville);
+                        $event->setAdresse((string)$coulage->Adresse);
+                        $event->setCp((string)$coulage->CodePostal);
+                        $event->setHoraire((string)$coulage->Ref_datepremiereoccurence->dateRef->Horaires);
+                        $event->setTelephone((string)$meta->Contacts->Contact->Telephone);
+                        $event->setNbParticipants(rand(0,1500));
+                        $manager->persist($event);
+
+
 
                     }
 

@@ -71,7 +71,7 @@ class Event
     private $cp;
 
     /**
-    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Ville", inversedBy="ville")
+    *@ORM\ManyToOne(targetEntity="AppBundle\Entity\Ville", inversedBy="events")
     *@ORM\JoinColumn(nullable=true)
     */
     private $ville;
@@ -112,7 +112,7 @@ class Event
 
     public function __toString()
     {
-        return $this->titre;
+        return $this->titre.$this->theme;
     }
 
     /**

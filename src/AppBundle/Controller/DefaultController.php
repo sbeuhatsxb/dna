@@ -36,8 +36,6 @@ class DefaultController extends Controller
                 // var_dump(count($events));
                 $events = $em->getRepository('AppBundle:Event')->recherche($ville_id);
                 // $events = $em->getRepository('AppBundle:Event')->rechercheEspace($espace);
-                var_dump($events);
-
                 return $this->render('default/resultats2.html.twig', array(
                     'events'=>$events,
                 ));    }

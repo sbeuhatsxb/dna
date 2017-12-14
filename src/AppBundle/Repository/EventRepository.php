@@ -13,40 +13,19 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
 {
     public function recherche($ville_id)
     {
-        //condition
         $query=$this->createQueryBuilder('e')
                         ->leftJoin('e.ville', 'v')
                         ->where('v.id=  :ville')
                         ->setParameter('ville', $ville_id)
-                        ->andWhere('e.etres=  :etre')
-                        ->setParameter('etre', $etre->getId())
-                        ->andWhere('e.espace=  :espace')
-                        ->setParameter('espace', $espace->getId())
+                        // ->andWhere('e.etres=  :etre')
+                        // ->setParameter('etre', $etre->getId())
+                        // ->andWhere('e.espace=  :espace')
+                        // ->setParameter('espace', $espace->getId())
                         ->getQuery();
         // $query=$this->_em->createQuery('SELECT e,v from AppBundle:Event e JOIN e.ville v WHERE v.id=:id_ville')
         //                     ->setParameter('id_ville', $ville_id);
         return $query->getResult();
 
-
-    }
-
-    public function rechercheEtre($etre)
-    {
-        $query=$this->createQueryBuilder('e')
-                        ->where('e.etre=  :etre')
-                        ->setParameter('etre', '$etre')
-                        ->getQuery();
-        $events = $query->getResult();
-
-    }
-
-    public function rechercheEspace($espace)
-    {
-        $query=$this->createQueryBuilder('e')
-                        ->where('e.espace=  :espace')
-                        ->setParameter('espace', '$espace')
-                        ->getQuery();
-        $events = $query->getResult();
 
     }
 

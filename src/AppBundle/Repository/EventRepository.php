@@ -13,6 +13,7 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
 {
     public function recherche($ville_id)
     {
+        if (isset($ville_id)) {
         $query=$this->createQueryBuilder('e')
                         ->leftJoin('e.ville', 'v')
                         ->where('v.id=  :ville')
@@ -25,6 +26,7 @@ class EventRepository extends \Doctrine\ORM\EntityRepository
         // $query=$this->_em->createQuery('SELECT e,v from AppBundle:Event e JOIN e.ville v WHERE v.id=:id_ville')
         //                     ->setParameter('id_ville', $ville_id);
         return $query->getResult();
+    }
 
 
     }

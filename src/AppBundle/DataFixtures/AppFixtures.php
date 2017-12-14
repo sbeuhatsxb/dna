@@ -30,9 +30,7 @@ class AppFixtures extends Fixture
         // ->/results->/events->category->theme->event->meta->key
         $villes = [];
 
-        $ville = New Ville();
-        $ville->setNomVille("");
-        $manager->persist($ville);
+
 
         foreach ($results->events->category as $category) {
             foreach ($category->theme as $theme) {
@@ -78,9 +76,7 @@ class AppFixtures extends Fixture
             }
         }
 
-        $etre = New Etre();
-        $etre->setLabel("");
-        $manager->persist($etre);
+
         $etre = New Etre();
         $etre->setLabel("émerveillé(e)");
         $manager->persist($etre);
@@ -118,11 +114,6 @@ class AppFixtures extends Fixture
         $etre->setLabel("sociable");
         $manager->persist($etre);
 
-
-
-        $espace = New Espace();
-        $espace->setLabel("");
-        $manager->persist($espace);
 
         $espace = New Espace();
         $espace->setLabel("au chaud");

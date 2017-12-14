@@ -49,25 +49,8 @@ class DefaultController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $events = $em->getRepository('AppBundle:Event')->recherche($ville_id, $etre_id, $espace_id);
 
-                        //
-                        //
-                        // // $nbParticipants = $_POST['event'.$event->getNbParticipants()];
-                        // if (isset($_GET["participer"]))
-                        // {
-                        //     $em = $this->getDoctrine()->getManager();
-                        //     $event = $em->getRepository('AppBundle:Event')->findId();
-                        //     var_dump($event);
-                        // $nbParticipants=$event->getNbParticipants();
-                        // var_dump($nbParticipants);
-                        // $nbParticipants++;
-                        // var_dump($nbParticipants);
-                        // $event->setNbParticipants($nbParticipants);
-                        // $em->persist($event);
-                        // $em->flush();
-                        // return $this->render('default/resultats2.html.twig', array(
-                        //     'events'=>$events,
-                        // ));
-                        // }
+
+
 
 
                 return $this->render('default/resultats.html.twig', array(
@@ -81,6 +64,8 @@ class DefaultController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+
         /**
          * @Route("/monresultat/{id}", name="monresultat")
          * @Method("GET")
@@ -91,5 +76,34 @@ class DefaultController extends Controller
                 'event' => $event
             ));
       }
+
+
+          /**
+           * @Route("/monresultat/{id}", name="monresultat")
+           * @Method("GET")
+           */
+           public function updateAction(Request $request, Event $event)
+           {
+
+                   $em = $this->getDoctrine()->getManager();
+                   $events = $em->getRepository('AppBundle:Event')->findById($event);
+                // var_dump($event);
+               foreach($events as $event){
+                $nbParticipants = $event->getNbParticipants();
+
+                   if ($request->query->get('participer') == "J'y participe !"){
+                       $nbParticipants++;
+                       var_dump($nbParticipants);
+                       // var_dump($nbParticipants);
+                       $event->setNbParticipants($nbParticipants);
+                       $em->persist($event);
+                       $em->flush();
+                      }
+                }
+
+           return $this->render('default/resultats3.html.twig', array(
+               'event' => $event
+           ));
+        }
 
 }

@@ -24,6 +24,11 @@
                             <input class ="btn center-block" name="participer" value="J'y participe !" type="submit"></td>
                         </form>
                     {% endif %}
+                    {% for message in app.flashes('notice') %}
+                        <div class="flash-notice">
+                            {{ message }}
+                                </div>
+                        {% endfor %}
                     </div>
 
                 </div>

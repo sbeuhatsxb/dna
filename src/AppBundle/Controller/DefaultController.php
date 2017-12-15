@@ -70,8 +70,24 @@ class DefaultController extends Controller
      * @Route("/monresultat/{id}", name="monresultat")
      * @Method({"GET", "POST"})
      */
-    public function resultatAction(Event $event)
+    public function resultatAction(Event $event, Request $request)
     {
+            $em = $this->getDoctrine()->getManager();
+            $events = $em->getRepository('AppBundle:Event')->findById($event);
+         // var_dump($event);
+        foreach($events as $event){
+         $nbParticipants = $event->getNbParticipants();
+
+            if ($request->getMethod() == "POST"){
+                dump($event);
+                $nbParticipants++;
+
+                // var_dump($nbParticipants);
+                $event->setNbParticipants($nbParticipants);
+                $em->persist($event);
+                $em->flush();
+               }
+         }
         return $this->render('default/resultats2.html.twig', array(
             'event' => $event
         ));
@@ -87,7 +103,33 @@ class DefaultController extends Controller
       }
 
 
-        
+        //   /**
+        //    * @Route("/monresultat/ok/{id}", name="monresultatok")
+        //    * @Method("GET")
+        //    */
+        //    public function updateAction(Request $request, Event $event)
+        //    {
+        //        // dump($event);
+        //            $em = $this->getDoctrine()->getManager();
+        //            $events = $em->getRepository('AppBundle:Event')->findById($event);
+        //         // var_dump($event);
+        //        foreach($events as $event){
+        //         $nbParticipants = $event->getNbParticipants();
+        //
+        //            if ($request->query->get('participer') == "J'y participe !"){
+        //                $nbParticipants++;
+        //
+        //                // var_dump($nbParticipants);
+        //                $event->setNbParticipants($nbParticipants);
+        //                $em->persist($event);
+        //                $em->flush();
+        //               }
+        //         }
+        //
+        //    return $this->render('default/resultats3.html.twig', array(
+        //        'event' => $event
+        //    ));
+        // }
 
 
 }

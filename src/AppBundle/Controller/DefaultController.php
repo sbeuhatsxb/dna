@@ -51,10 +51,10 @@ class DefaultController extends Controller
 
 
 
-
-
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
+                    'form' => $form->createView(),
+
                 ));    }
         }
 
@@ -76,6 +76,16 @@ class DefaultController extends Controller
             'event' => $event
         ));
   }
+
+      /**
+       * @Route("/#home", name="ancre")
+       * @Method("GET")
+       */
+      public function ancreAction()
+      {
+          return $this->redirect($this->generateUrl('homepage' . '#monAncre'));
+      }
+
 
           /**
            * @Route("/monresultat/ok/{id}", name="monresultatok")
@@ -104,7 +114,6 @@ class DefaultController extends Controller
                'event' => $event
            ));
         }
-
 
 
 }

@@ -2,29 +2,35 @@
 
 {% block body %}
     <div class="banniere">
-        <img src="{{ asset('images/banniere.png') }}" alt="homme_noir" />
+        <img src="{{ asset('images/banniere2.png') }}" alt="homme_noir" />
     </div>
+    <h1><span> Details de votre sortie</span></h1>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-6">
-                <p>{{ event.titre }}</p>
-                <p>{{ event.description }}</p>
-                <p>{{ event.descriptionComplementaire }}</p>
-            </div>
-            <div class="col-xs-6">
-                <p>{{ event.lieu }}</p>
-                <p>{{ event.adresse }}</p>
-                <p>{{ event.ville }}</p>
-                <p>{{ event.cp }}</p>
+    <div class="regles">
+        <div class="col-xs-12">
+            <div class="thumbnail_monResultat">
+                <div class="caption">
+                    <h3 class="text-center">{{ event.titre }}</h3>
+                    <p class="text-center">{{ event.description }}</p>
+                    <p class="text-center">{{ event.descriptionComplementaire }}</p>
+                    <p class="horaire">{{ event.horaire }}</p>
+                    <p class="text-center">{{ event.lieu }}</p>
+                    <p class="text-center">{{ event.adresse }}</p>
+                    <p class="text-center">{{ event.cp }}</p>
+                    <p class="text-center">{{ event.ville }}</p>
+                    <p class="text-center">Nombre de participants : {{ event.nbParticipants }}</p>
+                    <form method="get">
+                    <input name="participer" value="J'y participe" type="submit"></td>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-{{ event.nbParticipants }}
     <form method="get" action="{{path('monresultatok',{'id': event.id})}}">
     <input name="participer" value="J'y participe !" type="submit"></td>
     </form>
 
-        button bootstrap href : {{path('monresultatok',{'id': event.id})}}
+
 
 {% endblock %}

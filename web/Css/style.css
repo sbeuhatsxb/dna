@@ -6,6 +6,10 @@ img {
     width: 100%;
 }
 
+.test{
+    padding-bottom: 5px ;
+}
+
 .logo {
     margin-top: -20px;
 }
@@ -26,6 +30,14 @@ img {
 
 .cache {
     display: none;
+    font-size: 0.9em;
+}
+
+.center-block {
+    margin-bottom: 5px;
+}
+.titres{
+    font-size: 1.3em;
 }
 
 .visible{
@@ -34,8 +46,10 @@ img {
 
 
 .thumbnail{
-    max-width: 350px;
-    max-height: 100%;
+    max-width: 400px;
+    max-height: 300px;
+    min-width: 200px;
+    min-height: 400px;
     margin: auto;
     -webkit-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
     -moz-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
@@ -77,6 +91,11 @@ img {
 {
    background-image: url("../images/banniere.png");
 }
+
+.autre_banniere img {
+    background-image: url("../images/banniere.png");
+    height: 30px;
+}
 .baseline {
     justify-content: center;
     text-align: center;
@@ -115,6 +134,7 @@ p {
 }
 
 footer {
+
     margin-top: 20%;
 }
 

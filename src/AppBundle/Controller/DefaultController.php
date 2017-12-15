@@ -86,6 +86,10 @@ class DefaultController extends Controller
                 $event->setNbParticipants($nbParticipants);
                 $em->persist($event);
                 $em->flush();
+                $this->addFlash(
+                    'notice',
+                    "Bonne sortie !"
+            );
                }
          }
         return $this->render('default/resultats2.html.twig', array(

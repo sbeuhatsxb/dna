@@ -288,7 +288,13 @@ footer {
 
 
 
-
 input {
     background-color: #000;
+}
+
+.flash-notice {
+    text-align: center;
+    color: #FA0000;
+    font-size: 30px;
+    font-family: Sriracha;
 }

@@ -25,10 +25,9 @@
             <div class="caption">
                 <h3 class="text-center titres">{{ event.titre }}</h3>
                 <p class="text-center">{{ event.theme }}</p>
-                <button id="button_{{ event.id }}" class="center-block">Lire la suite</button>
+                <button id="button_{{ event.id }}" class="center-block">description</button>
                 <p id="desc_{{ event.id }}" class="cache">{{ event.description }}</p>
                 {#<p>{{ event.description }}</p>#}
-                </div>
                 <p class="horaire">{{ event.horaire }}</p>
                 <p><a href="{{ path('monresultat', {'id' : event.id}) }}" class="btn" role="button">Je veux en savoir plus</a>
             </div>

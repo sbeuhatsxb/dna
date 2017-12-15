@@ -21,9 +21,10 @@
                     <p class="text-center">Nombre de participants : {{ event.nbParticipants }}</p>
                     {% if app.request.method == "GET" %}
                         <form method="post">
-                            <input name="participer" value="J'y participe !" type="submit"></td>
+                            <input class ="btn center-block" name="participer" value="J'y participe !" type="submit"></td>
                         </form>
                     {% endif %}
+                    </div>
 
                 </div>
             </div>

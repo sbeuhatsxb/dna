@@ -4,7 +4,7 @@
     <div class="banniere">
         <img src="{{ asset('images/banniere2.png') }}" alt="homme_noir" />
     </div>
-    <h1><span> Details de votre sortie</span></h1>
+    <h1><span> Détails de votre sortie</span></h1>
     <div class="container">
     <div class="regles">
         <div class="col-xs-12">
@@ -18,7 +18,7 @@
                     <p class="text-center">{{ event.adresse }}</p>
                     <p class="text-center">{{ event.cp }}</p>
                     <p class="text-center">{{ event.ville }}</p>
-                    <p class="text-center">Nombre de participants : {{ event.nbParticipants }}</p>
+                    <p class="text-center participants">Nombre de participants : {{ event.nbParticipants }}</p>
                     {% if app.request.method == "GET" %}
                         <form method="post">
                             <input class ="btn center-block" name="participer" value="J'y participe !" type="submit"></td>
@@ -29,6 +29,7 @@
                 </div>
             </div>
         </div>
+        <p><a href="{{ path('homepage') }}" class="text-right" role="button">Retour à l'accueil</a></p>
     </div>
 
 

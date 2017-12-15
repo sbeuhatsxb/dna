@@ -4,6 +4,16 @@
     <div class="banniere">
         <img src="{{ asset('images/banniere2.png') }}" alt="homme_noir" />
     </div>
+    <div class="phrase">
+        <p class="text-center">Je veux être
+        {% for etre in event.etres %}
+        {{ etre.label }},
+        {% endfor %}
+        et
+        {{ event.espace }}
+        à
+        {{ event.ville }}</p>
+    </div>    
     <h1><span> Details de votre sortie</span></h1>
     <div class="container">
     <div class="regles">

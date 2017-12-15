@@ -19,17 +19,15 @@
                     <p class="text-center">{{ event.cp }}</p>
                     <p class="text-center">{{ event.ville }}</p>
                     <p class="text-center">Nombre de participants : {{ event.nbParticipants }}</p>
-                    <form method="get">
-                    <input name="participer" value="J'y participe" type="submit"></td>
+                    <form method="get" action="{{path('monresultatok',{'id': event.id})}}">
+                    <input name="participer" value="J'y participe !" type="submit"></td>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <form method="get" action="{{path('monresultatok',{'id': event.id})}}">
-    <input name="participer" value="J'y participe !" type="submit"></td>
-    </form>
+
 
 
 

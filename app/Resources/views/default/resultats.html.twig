@@ -4,15 +4,16 @@
 
 {% block body %}
     <div class="banniere">
-        <img src="{{ asset('images/banniere.png') }}" alt="homme_noir" />
+        <img src="{{ asset('images/banniere2.png') }}" alt="homme_noir" />
     </div>
 <div class="container">
+
 
     <div class="row">
         <h1><span> Voici vos résultats d'idées de sorties pour le 15 décembre 2017</span></h1>
         <h3>Et si tu viens de changer d'humeur...</h3>
 
-        <p><a href="{{ path('homepage', {'_fragment': 'home'}) }}" class="btn" role="button">Nouvelle recherche</a>
+        <p><a href="{{ path('homepage') }}#home" class="btn" role="button">Nouvelle recherche</a>
 
     </div>
 

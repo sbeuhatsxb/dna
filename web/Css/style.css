@@ -57,6 +57,25 @@ img {
 
 }
 
+.thumbnail_monResultat{
+    max-width: 1000px;
+    max-height: 100%;
+    margin: auto;
+    -webkit-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    display: block;
+    padding: 4px;
+    margin-bottom: 100px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
 .horaire
 {
     font-weight: bolder;
@@ -71,6 +90,11 @@ img {
 .banniere
 {
    background-image: url("../images/banniere.png");
+}
+
+.autre_banniere img {
+    background-image: url("../images/banniere.png");
+    height: 30px;
 }
 .baseline {
     justify-content: center;
@@ -110,6 +134,7 @@ p {
 }
 
 footer {
+
     margin-top: 20%;
 }
 

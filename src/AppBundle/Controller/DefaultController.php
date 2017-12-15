@@ -54,6 +54,7 @@ class DefaultController extends Controller
                 return $this->render('default/resultats.html.twig', array(
                     'events'=>$events,
                     'form' => $form->createView(),
+
                 ));    }
         }
 

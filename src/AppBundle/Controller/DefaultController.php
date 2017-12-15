@@ -88,7 +88,7 @@ class DefaultController extends Controller
                 $em->flush();
                 $this->addFlash(
                     'notice',
-                    "Bonne sortie !"
+                    "Bonne sortie!"
             );
                }
          }

@@ -19,16 +19,16 @@
                     <p class="text-center">{{ event.cp }}</p>
                     <p class="text-center">{{ event.ville }}</p>
                     <p class="text-center">Nombre de participants : {{ event.nbParticipants }}</p>
-                    <form method="get" action="{{path('monresultatok',{'id': event.id})}}">
-                    <input name="participer" value="J'y participe !" type="submit"></td>
-                    </form>
+                    {% if app.request.method == "GET" %}
+                        <form method="post">
+                            <input name="participer" value="J'y participe !" type="submit"></td>
+                        </form>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
 
 {% endblock %}

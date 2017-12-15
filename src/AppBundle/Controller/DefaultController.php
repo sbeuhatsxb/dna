@@ -65,25 +65,25 @@ class DefaultController extends Controller
     }
 
 
-        /**
-         * @Route("/monresultat/{id}", name="monresultat")
-         * @Method("GET")
-         */
-        public function resultatAction(Event $event)
-        {
-            return $this->render('default/resultats2.html.twig', array(
-                'event' => $event
-            ));
-      }
 
+    /**
+     * @Route("/monresultat/{id}", name="monresultat")
+     * @Method("GET")
+     */
+    public function resultatAction(Event $event)
+    {
+        return $this->render('default/resultats2.html.twig', array(
+            'event' => $event
+        ));
+  }
 
           /**
-           * @Route("/monresultat/{id}", name="monresultat")
+           * @Route("/monresultat/ok/{id}", name="monresultatok")
            * @Method("GET")
            */
            public function updateAction(Request $request, Event $event)
            {
-
+               // dump($event);
                    $em = $this->getDoctrine()->getManager();
                    $events = $em->getRepository('AppBundle:Event')->findById($event);
                 // var_dump($event);
@@ -92,7 +92,7 @@ class DefaultController extends Controller
 
                    if ($request->query->get('participer') == "J'y participe !"){
                        $nbParticipants++;
-                       var_dump($nbParticipants);
+
                        // var_dump($nbParticipants);
                        $event->setNbParticipants($nbParticipants);
                        $em->persist($event);
@@ -104,5 +104,7 @@ class DefaultController extends Controller
                'event' => $event
            ));
         }
+
+
 
 }

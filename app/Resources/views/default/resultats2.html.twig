@@ -21,7 +21,10 @@
     </div>
 
 {{ event.nbParticipants }}
-    <form method="get">
+    <form method="get" action="{{path('monresultatok',{'id': event.id})}}">
     <input name="participer" value="J'y participe !" type="submit"></td>
     </form>
+
+        button bootstrap href : {{path('monresultatok',{'id': event.id})}}
+
 {% endblock %}

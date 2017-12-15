@@ -240,3 +240,8 @@ h1 span{
 
 
 #lirelasuite {display:none;}
+
+footer {
+    border-top: 5px solid #FA0000;
+    padding: 30px;
+}

@@ -261,4 +261,11 @@ input {
 
 .phrase {
     margin-top: 100px;
+    font-family: Sriracha;
+    color: #FA0000;
+}
+
+.text-center_phrase {
+    font-family: Sriracha;
+    font-size: 1.7em;
 }

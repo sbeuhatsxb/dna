@@ -10,10 +10,10 @@
 
 
     <div class="row">
-        <h1><span> Voici vos résultats d'idées de sorties pour le 15 décembre 2017</span></h1>
+        <h1><span>Idées de sorties pour le 15 décembre 2017</span></h1>
         <h3>Et si tu viens de changer d'humeur...</h3>
 
-        <p><a href="{{ path('homepage') }}#home" class="btn" role="button">Nouvelle recherche</a>
+        <p><a href="{{ path('homepage') }}" class="btn" role="button">Nouvelle recherche</a>
 
     </div>
 
@@ -25,7 +25,7 @@
             <div class="caption">
                 <h3 class="text-center titres">{{ event.titre }}</h3>
                 <p class="text-center">{{ event.theme }}</p>
-                <button id="button_{{ event.id }}" class="center-block">description</button>
+                <button id="button_{{ event.id }}" class="center-block lire">Description</button>
                 <p id="desc_{{ event.id }}" class="cache">{{ event.description }}</p>
                 {#<p>{{ event.description }}</p>#}
                 <p class="horaire">{{ event.horaire }}</p>

@@ -79,7 +79,7 @@ class DefaultController extends Controller
 
 
           /**
-           * @Route("/monresultat/{id}", name="monresultat")
+           * @Route("/monresultat/ok/{id}", name="monresultatok")
            * @Method("GET")
            */
            public function updateAction(Request $request, Event $event)

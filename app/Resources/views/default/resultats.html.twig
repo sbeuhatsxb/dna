@@ -8,28 +8,6 @@
     </div>
 <div class="container">
 
-<div class="form">
-    <div class="container bot_form">
-        <div class="row">
-            {{ form_start(form) }}
-            <div class="col-xs-4">
-                <p>JE VEUX ÊTRE {{ form_widget(form.etre) }}{{ form_errors(form.etre) }}</p>
-            </div>
-            <div class="col-xs-4">
-                <p>ET {{ form_widget(form.espace) }} {{ form_errors(form.espace) }}</p>
-            </div>
-            <div class="col-xs-4">
-                <p>À {{ form_widget(form.ville) }}{{ form_errors(form.ville) }}</p>
-            </div>
-        </div>
-        <div class="form-group-save">
-            {{ form_label(form.save) }}
-            </br>
-            {{ form_widget(form.save) }}
-        </div>
-    </div>
-</div>
-
     <div class="row">
         <h1><span> Voici vos résultats d'idées de sorties pour le 15 décembre 2017</span></h1>
     </div>
@@ -42,9 +20,11 @@
             <div class="caption">
                 <h3 class="text-center">{{ event.titre }}</h3>
                 <p class="text-center">{{ event.theme }}</p>
+                <div class="plus">
                 <button id="button_{{ event.id }}">Lire la suite</button>
                 <p id="desc_{{ event.id }}" class="cache">{{ event.description }}</p>
                 {#<p>{{ event.description }}</p>#}
+                </div>
                 <p class="horaire">{{ event.horaire }}</p>
                 <p><a href="{{ path('monresultat', {'id' : event.id}) }}" class="btn" role="button">Je veux en savoir plus</a>
             </div>
